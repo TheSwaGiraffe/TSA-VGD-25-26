@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float xInput = Input.GetAxis("Horizontal");
-        bool jumping = Input.GetKey("up") || Input.GetKey("w") || Input.GetKey("space");
+        bool jumping = Input.GetKey("up") || Input.GetKey("w");
 
         rb.linearVelocity = new Vector2(xInput * MoveSpeed, rb.linearVelocity.y);
         if (jumping && groundedHitbox.IsTouchingLayers(GroundLayer)){
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         updateSpriteVisual();
         if(rb.linearVelocity.magnitude == 0){
             transform.position = sprite.position;
+            updateSpriteVisual();
         }
     }
     void updateSpriteVisual()
