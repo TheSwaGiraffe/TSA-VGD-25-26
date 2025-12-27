@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform sprite;
     [SerializeField] BoxCollider2D groundedHitbox;
     [SerializeField] LayerMask GroundLayer;
+    [SerializeField] Transform Camera;
     void Update()
     {
         float xInput = Input.GetAxis("Horizontal");
@@ -34,5 +35,6 @@ public class PlayerController : MonoBehaviour
         float newY = Mathf.Round(sprite.position.y*8)/8;
         float newZ = sprite.position.z;
         sprite.position = new Vector3(newX, newY, newZ);
+        Camera.position = new Vector3(newX, Camera.position.y, Camera.position.z);
     }
 }
