@@ -302,6 +302,8 @@ GameObject:
   m_Component:
   - component: {fileID: 566098807}
   - component: {fileID: 566098808}
+  - component: {fileID: 566098810}
+  - component: {fileID: 566098809}
   m_Layer: 0
   m_Name: Backdoor
   m_TagString: Untagged
@@ -382,6 +384,42 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &566098809
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566098806}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f8cb030e9bbed0a48bd1910a3f11ab36, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &566098810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566098806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea115d333e836024485f09121394ccf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Door
+  animator: {fileID: 566098809}
+  _open: 1
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +1025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea115d333e836024485f09121394ccf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  animator: {fileID: 0}
+  animator: {fileID: 1221098799}
+  _open: 1
 --- !u!1 &1386246965
 GameObject:
   m_ObjectHideFlags: 0
