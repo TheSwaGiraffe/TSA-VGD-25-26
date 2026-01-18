@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BoxCollider2D groundedHitbox;
     [SerializeField] LayerMask GroundLayer;
     [SerializeField] Transform Camera;
+
+    [SerializeField] Animator animator;
     void Update()
     {
         float xInput = Input.GetAxis("Horizontal");
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
             transform.position = sprite.position;
             updateSpriteVisual();
         }
+        
+        animator.SetBool("IsMoving", xInput != 0 || jumping);
     }
     void updateSpriteVisual()
     {
