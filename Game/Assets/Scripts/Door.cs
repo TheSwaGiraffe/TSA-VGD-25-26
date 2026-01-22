@@ -12,9 +12,9 @@ public class Door : MonoBehaviour
     [SerializeField] BoxCollider2D doorCollider;
     [SerializeField] LayerMask playerLayer;
 
-    void OnValidate()
+    void Awake()
     {
-        animator.SetBool("Open", _open);
+        Open = _open;
     }
     void Update()
     {
