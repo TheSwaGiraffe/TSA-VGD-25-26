@@ -1,5 +1,3 @@
-using System.Data.Common;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,7 +18,7 @@ public class Door : MonoBehaviour
     {
         if (doorCollider.IsTouchingLayers(playerLayer) && _open)
         {
-            SceneManager.LoadScene(sceneIndex);
+            SceneManager.LoadSceneAsync(sceneIndex);
         }
     }
 }

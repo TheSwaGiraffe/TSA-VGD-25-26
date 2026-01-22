@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
@@ -10,7 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float JumpPower;
     [Header("Camera Properties")]
     [SerializeField] Vector2 CamPadding;
-    [SerializeField] bool CenterCam;
+    [SerializeField] bool CenterCam = false;
+    [SerializeField] bool ResizeCam = false;
     [Header("References")]
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform sprite;
@@ -86,6 +85,21 @@ public class PlayerController : MonoBehaviour
         camBounds.size += new Vector3(CamPadding.x, CamPadding.y); //Pad bounds
         camBounds.size -= new Vector3(camWidth, camHeight); //Shrink bounds by Camera size
     }
+    void resizeCam() //optimizes camera size so that 1 game pixel translates to an integer number of screen pixels
+    {
+        float pixelsWorld = cam.orthographicSize*8;
+        float pixelsScreen = cam.scaledPixelHeight;
+        Debug.Log(pixelsWorld);
+        Debug.Log(pixelsScreen);
+        Debug.Log(pixelsScreen/pixelsWorld);
+        float targetPixelsWorld = 1/(Mathf.Round(pixelsScreen/pixelsWorld)/pixelsScreen);
+        Debug.Log(targetPixelsWorld);
+        cam.orthographicSize = targetPixelsWorld/8.0001f;
+        pixelsWorld = cam.orthographicSize*8;
+        pixelsScreen = cam.scaledPixelHeight;
+        Debug.Log(pixelsScreen/pixelsWorld);
+
+    }
     #if UNITY_EDITOR
     void OnValidate()
     {
@@ -94,6 +108,11 @@ public class PlayerController : MonoBehaviour
             CenterCam = false;
             calculateCamBounds();
             cam.transform.position = new Vector3(camBounds.center.x, camBounds.center.y, cam.transform.position.z);
+        }
+        if (ResizeCam)
+        {
+            resizeCam();
+            ResizeCam = false;
         }
     }
     void debugBounds(Bounds bounds, Color color)
