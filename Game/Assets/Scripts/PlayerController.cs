@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
@@ -14,10 +16,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform sprite;
     [SerializeField] BoxCollider2D groundedHitbox;
+    [SerializeField] BoxCollider2D playerHitbox;
     [SerializeField] LayerMask GroundLayer;
     [SerializeField] Camera cam;
     [SerializeField] Animator animator;
     [SerializeField] Tilemap GroundTilemap;
+    [SerializeField] LayerMask DeathLayer;
     Bounds camBounds;
     void Start()
     {
@@ -43,8 +47,13 @@ public class PlayerController : MonoBehaviour
 
         updateSpriteVisual();
         updateCam();
+        animator.SetBool("IsMoving", xInput != 0 || jumping); //update animator
 
-        animator.SetBool("IsMoving", xInput != 0 || jumping);
+        if (playerHitbox.IsTouchingLayers(DeathLayer))
+        {
+            Die();
+            Debug.Log("u ded");
+        }
     }
     void updateSpriteVisual()
     {
@@ -94,11 +103,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log(pixelsScreen/pixelsWorld);
         float targetPixelsWorld = 1/(Mathf.Round(pixelsScreen/pixelsWorld)/pixelsScreen);
         Debug.Log(targetPixelsWorld);
-        cam.orthographicSize = targetPixelsWorld/8.0001f;
+        cam.orthographicSize = targetPixelsWorld/8.01f;
         pixelsWorld = cam.orthographicSize*8;
         pixelsScreen = cam.scaledPixelHeight;
         Debug.Log(pixelsScreen/pixelsWorld);
 
+    }
+    public void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     #if UNITY_EDITOR
     void OnValidate()

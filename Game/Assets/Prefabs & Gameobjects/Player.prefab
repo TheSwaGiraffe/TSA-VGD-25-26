@@ -123,14 +123,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   MoveSpeed: 8
   JumpPower: 16
+  CamPadding: {x: 0, y: 0}
+  CenterCam: 0
+  ResizeCam: 0
   rb: {fileID: 2640242090143709984}
   sprite: {fileID: 6185104889338879732}
   groundedHitbox: {fileID: 5593557687397866530}
+  playerHitbox: {fileID: 8884477079548234312}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  Camera: {fileID: 0}
+  cam: {fileID: 0}
   animator: {fileID: 8308720911199804891}
+  GroundTilemap: {fileID: 0}
+  DeathLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!61 &5593557687397866530
 BoxCollider2D:
   m_ObjectHideFlags: 0

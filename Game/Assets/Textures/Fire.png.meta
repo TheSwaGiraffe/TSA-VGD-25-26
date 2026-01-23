@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3bae1779b9a09194d99d402997cf2715
+guid: 3ab27fabaa4fae240ac7aae63c4c3362
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4491258511774967838
-    second: door 1_0
+      213: -2053989363645956680
+    second: pixilart-sprite (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: backdoor_0
+      name: Fire_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 24
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,20 +128,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77d05aec787f0e04bb47eb1f7622ae33
-      internalID: 125342236
+      spriteID: 1b079071fe63c2b429176e4c240730e0
+      internalID: -699548710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: backdoor_1
+      name: Fire_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ed2fcdbb199404cae393409a95f842
+      internalID: -567941338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_2
       rect:
         serializedVersion: 2
         x: 16
         y: 0
-        width: 16
-        height: 24
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6774cad5872d8fe468a0fc63b961d55f
-      internalID: -1476547277
+      spriteID: 6b8afcaba8c2e27498f18e80d0a894de
+      internalID: 1703853124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: backdoor_2
+      name: Fire_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 24
         y: 0
-        width: 16
-        height: 24
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,118 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f69f65c96988674fbc2612b713a66a9
-      internalID: 197779368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: backdoor_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b2d41134a67f5849aa7aad040357d43
-      internalID: 1067586807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: backdoor_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e3f17389e176a9d4c9ccbc74d051fcf7
-      internalID: 944444025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: backdoor_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bcc43c7cb3ee1484aad6bbb4cd9b6654
-      internalID: 1106938794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: backdoor_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 16
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dbd0f4b5717972e41963ed474d93c5e0
-      internalID: -14696017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: backdoor_7
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 0
-        width: 16
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d2d2922b39177774e8877da98963dac2
-      internalID: -2000007180
+      spriteID: cd47b5cc99d8b7646a438acc197f3c66
+      internalID: 478182458
       vertices: []
       indices: 
       edges: []
@@ -292,7 +204,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d96478b351d74564a9a2511713098a10
+    spriteID: 34826858afed99348a546f299032abf5
     internalID: 0
     vertices: []
     indices: 
@@ -302,16 +214,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":24.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      backdoor_0: 125342236
-      backdoor_1: -1476547277
-      backdoor_2: 197779368
-      backdoor_3: 1067586807
-      backdoor_4: 944444025
-      backdoor_5: 1106938794
-      backdoor_6: -14696017
-      backdoor_7: -2000007180
+      Fire_0: -699548710
+      Fire_1: -567941338
+      Fire_2: 1703853124
+      Fire_3: 478182458
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

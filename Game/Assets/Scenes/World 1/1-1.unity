@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 7928360}
   - component: {fileID: 7928359}
   m_Layer: 0
-  m_Name: Square (3)
+  m_Name: Background (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 143420137}
   - component: {fileID: 143420136}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8680794372833924384, guid: fa8ce0ea4a735c4428c72d8fc2581ede, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 8680794372833924384, guid: fa8ce0ea4a735c4428c72d8fc2581ede, type: 3}
       propertyPath: m_LocalRotation.w
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 1672953758}
   - component: {fileID: 1672953757}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Background (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 1782959497}
   - component: {fileID: 1782959496}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Background (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
