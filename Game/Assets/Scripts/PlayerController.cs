@@ -1,4 +1,3 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
@@ -22,7 +21,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Tilemap GroundTilemap;
     [SerializeField] LayerMask DeathLayer;
+    public GameObject Key;
     Bounds camBounds;
+    float screenHeight;
     void Start()
     {
         calculateCamBounds();
@@ -44,6 +45,14 @@ public class PlayerController : MonoBehaviour
         {
             RedBlueUpdater.redActive = !RedBlueUpdater.redActive;
         }
+        if(xInput > 0)
+        {
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+        }
+        if(xInput < 0)
+        {
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        }
 
         updateSpriteVisual();
         updateCam();
@@ -57,12 +66,14 @@ public class PlayerController : MonoBehaviour
     }
     void updateSpriteVisual()
     {
+        if(rb.linearVelocity.magnitude > 5f){return;} //Skip when moving fast for smooth movement
+
         //round position to nearest 8th so the sprite is pixel perfect
         sprite.position = transform.position;
         float newX = Mathf.Round(sprite.position.x * 8) / 8;
         float newY = Mathf.Round(sprite.position.y * 8) / 8;
         float newZ = sprite.position.z;
-        if (rb.linearVelocity.magnitude == 0) { transform.position = new Vector3(newX, newY, transform.position.z); }
+        if (rb.linearVelocity.magnitude == 0) { transform.position = new Vector3(newX, transform.position.y, transform.position.z); }
         sprite.position = new Vector3(newX, newY, newZ);
     }
     void updateCam()
@@ -74,15 +85,15 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 min = GroundTilemap.transform.TransformPoint(camBounds.min);
         Vector2 max = GroundTilemap.transform.TransformPoint(camBounds.max);
-        
+
         //Clamp camera to be inside the bounds
         float newCamX = Mathf.Clamp(cam.transform.position.x, min.x, max.x);
         float newCamY = Mathf.Clamp(cam.transform.position.y, min.y, max.y);
 
         //Center camera if it is too big for the bounds
-        if(camBounds.size.x <= 0){ newCamX = camBounds.center.x;}
-        if(camBounds.size.y <= 0){ newCamY = camBounds.center.y;}
-        
+        if (camBounds.size.x <= 0) { newCamX = camBounds.center.x; }
+        if (camBounds.size.y <= 0) { newCamY = camBounds.center.y; }
+
         cam.transform.position = new Vector3(newCamX, newCamY, cam.transform.position.z);
     }
     void calculateCamBounds()
@@ -96,24 +107,19 @@ public class PlayerController : MonoBehaviour
     }
     void resizeCam() //optimizes camera size so that 1 game pixel translates to an integer number of screen pixels
     {
-        float pixelsWorld = cam.orthographicSize*8;
-        float pixelsScreen = cam.scaledPixelHeight;
-        Debug.Log(pixelsWorld);
-        Debug.Log(pixelsScreen);
-        Debug.Log(pixelsScreen/pixelsWorld);
-        float targetPixelsWorld = 1/(Mathf.Round(pixelsScreen/pixelsWorld)/pixelsScreen);
-        Debug.Log(targetPixelsWorld);
-        cam.orthographicSize = targetPixelsWorld/8.01f;
-        pixelsWorld = cam.orthographicSize*8;
-        pixelsScreen = cam.scaledPixelHeight;
-        Debug.Log(pixelsScreen/pixelsWorld);
-
+        if (cam.scaledPixelHeight == screenHeight) { return; } //Skip if screenheight is unchanged
+        float pixelsWorld = cam.orthographicSize * 8;
+        screenHeight = cam.scaledPixelHeight;
+        float targetPixelsWorld = 1 / (Mathf.Floor(screenHeight / pixelsWorld) / screenHeight);
+        float targetSize = targetPixelsWorld / 8f; //8.01 instead of 8.0 so no floating point errors when rendering
+        cam.orthographicSize = targetSize;
+        calculateCamBounds();
     }
     public void Die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     void OnValidate()
     {
         if (CenterCam)
@@ -151,5 +157,5 @@ public class PlayerController : MonoBehaviour
             color
         );
     }
-    #endif
+#endif
 }

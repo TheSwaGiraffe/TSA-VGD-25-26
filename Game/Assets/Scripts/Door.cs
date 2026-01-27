@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,9 +17,29 @@ public class Door : MonoBehaviour
     }
     void Update()
     {
-        if (doorCollider.IsTouchingLayers(playerLayer) && _open)
+        if (doorCollider.IsTouchingLayers(playerLayer))
         {
+            if (!_open)
+            {
+                PlayerController player = FindAnyObjectByType<PlayerController>();
+                if (player.Key.activeSelf)
+                {
+                    Open = true;
+                }
+                else
+                {
+                    return;
+                }
+            }
             SceneManager.LoadSceneAsync(sceneIndex);
         }
     }
+#if UNITY_EDITOR
+    void OnValidate()
+    {
+        if(animator.isActiveAndEnabled){
+            Open = Open;
+        }
+    }
+#endif
 }
