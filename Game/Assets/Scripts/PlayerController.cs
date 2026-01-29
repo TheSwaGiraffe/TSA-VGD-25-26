@@ -5,14 +5,14 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Properties")]
-    [SerializeField] float MoveSpeed;
-    [SerializeField] float JumpPower;
+    public float MoveSpeed;
+    public float JumpPower;
     [Header("Camera Properties")]
     [SerializeField] Vector2 CamPadding;
     [SerializeField] bool CenterCam = false;
     [SerializeField] bool ResizeCam = false;
     [Header("References")]
-    [SerializeField] Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] Transform sprite;
     [SerializeField] BoxCollider2D groundedHitbox;
     [SerializeField] BoxCollider2D playerHitbox;
@@ -36,10 +36,10 @@ public class PlayerController : MonoBehaviour
         bool swap = Input.GetKeyDown("space");
 
         //Use Input
-        rb.linearVelocity = new Vector2(xInput * MoveSpeed, rb.linearVelocity.y);
+        rb.linearVelocityX = xInput * MoveSpeed;
         if (jumping && groundedHitbox.IsTouchingLayers(GroundLayer))
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpPower);
+            rb.linearVelocityY = JumpPower;
         }
         if (swap)
         {
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
 
-        updateSpriteVisual();
+        //updateSpriteVisual();
         updateCam();
         animator.SetBool("IsMoving", xInput != 0 || jumping); //update animator
 
@@ -66,8 +66,6 @@ public class PlayerController : MonoBehaviour
     }
     void updateSpriteVisual()
     {
-        if(rb.linearVelocity.magnitude > 5f){return;} //Skip when moving fast for smooth movement
-
         //round position to nearest 8th so the sprite is pixel perfect
         sprite.position = transform.position;
         float newX = Mathf.Round(sprite.position.x * 8) / 8;

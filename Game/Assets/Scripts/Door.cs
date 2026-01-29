@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +12,7 @@ public class Door : MonoBehaviour
     [SerializeField] int sceneIndex; //Buildindex of the scene that loads when entering the door
     [SerializeField] BoxCollider2D doorCollider;
     [SerializeField] LayerMask playerLayer;
+    bool entered = false;
 
     void Awake()
     {
@@ -17,7 +20,8 @@ public class Door : MonoBehaviour
     }
     void Update()
     {
-        if (doorCollider.IsTouchingLayers(playerLayer))
+        if(entered){Debug.Log("hi");}
+        if (doorCollider.IsTouchingLayers(playerLayer) && !entered)
         {
             if (!_open)
             {
@@ -31,7 +35,16 @@ public class Door : MonoBehaviour
                     return;
                 }
             }
-            SceneManager.LoadSceneAsync(sceneIndex);
+            StartCoroutine(LoadNextScene(sceneIndex));
+            entered = true;
+        }
+    }
+    IEnumerator LoadNextScene(int index)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
         }
     }
 #if UNITY_EDITOR

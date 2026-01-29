@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class RedBlueUpdater : MonoBehaviour
@@ -14,14 +15,19 @@ public class RedBlueUpdater : MonoBehaviour
         set
         {
             if (!Instance) { Debug.Log("No RedBlueUpdater Instance"); return;}
-            Instance.setRedActive(value);
+            Instance.StartCoroutine(Instance.attemptSetRedActive(value));
         }
     }
     void Awake() => Instance = this;
     #endregion
     [SerializeField] bool _redActive = true;
     [Header("References")]
-    public Tilemap RedBlueTilemap;
+    [Tooltip("Layers of objects that get in the way of swapping")]
+    public LayerMask OverlapLayers;
+    public Tilemap Red;
+    public Tilemap Blue;
+    public CompositeCollider2D RedCol;
+    public CompositeCollider2D BlueCol;
     public Tile[] redTiles;
     public Tile[] blueTiles;
     [SerializeField] Sprite[] _onSprites;
@@ -38,12 +44,25 @@ public class RedBlueUpdater : MonoBehaviour
         for (int i = 0; i < redTiles.Length; i++)
         {
             _onTiles[i].sprite = _onSprites[i];
-            _onTiles[i].colliderType = Tile.ColliderType.Grid;
 
             _offTiles[i].sprite = _offSprites[i];
-            _offTiles[i].colliderType = Tile.ColliderType.None;
         }
-        RedBlueTilemap.RefreshAllTiles();
+        RedCol.isTrigger = !redActive;
+        BlueCol.isTrigger = redActive;
+        RedCol.gameObject.layer = redActive? 3 : 0;
+        BlueCol.gameObject.layer = redActive? 0 : 3;
+        Red.RefreshAllTiles();
+        Blue.RefreshAllTiles();
+        Debug.Log("Swapped to "+(redActive? "red" : "blue"));
+    }
+    IEnumerator attemptSetRedActive(bool value)
+    {
+        CompositeCollider2D activeCol = value ? RedCol : BlueCol;
+        while (activeCol.IsTouchingLayers(OverlapLayers))
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        setRedActive(value);
     }
 #if UNITY_EDITOR
     //Reset tiles so Red & Blue are both on in the editor
@@ -69,6 +88,7 @@ public class RedBlueUpdater : MonoBehaviour
         if (_tilemapDirty)
         {
             setRedActive(_redActive);
+            _tilemapDirty = false;
         }
     }
 #endif
