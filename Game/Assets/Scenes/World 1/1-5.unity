@@ -1156,7 +1156,7 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
-      m_AllTileFlags: 1073741825
+      m_AllTileFlags: 2147483649
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
@@ -1175,7 +1175,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 1
-    m_Data: {fileID: -1033902816, guid: d39a9df31db288f499209fcb5e325a2d, type: 3}
+    m_Data: {fileID: -1686723614, guid: ab81099edb65bda45ab1a03b25b44c99, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
@@ -10033,7 +10033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8970431467548632413, guid: 962e46fe2d2df014bbd4f8cfe5bbbb8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8970431467548632413, guid: 962e46fe2d2df014bbd4f8cfe5bbbb8b, type: 3}
       propertyPath: m_LocalRotation.w

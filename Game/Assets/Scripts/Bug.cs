@@ -8,7 +8,10 @@ public class Bug : MonoBehaviour
     [Tooltip("Bug will 'bounce' off specified layers")]
     [SerializeField] LayerMask ReturnLayers;
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] LayerMask PlayerLayer;
+    void Awake()
+    {
+        Physics2D.IgnoreCollision(Hitbox, ForwardsHitbox);
+    }
     void FixedUpdate()
     {
         if (ForwardsHitbox.IsTouchingLayers(ReturnLayers))
@@ -17,7 +20,7 @@ public class Bug : MonoBehaviour
             velocity *= -1;        
         }
         rb.linearVelocityX = velocity;
-        if (Hitbox.IsTouchingLayers(PlayerLayer))
+        if (Hitbox.IsTouchingLayers(LayerManager.PlayerLayer))
         {
             PlayerController player = FindAnyObjectByType<PlayerController>();
             player.rb.linearVelocityY = player.JumpPower*1.5f;

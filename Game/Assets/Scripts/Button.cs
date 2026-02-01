@@ -21,17 +21,14 @@ public class Button : MonoBehaviour
         if(newIsPressed && !isPressed)//On Pressed
         {
             OnPressed.Invoke();
-            Debug.Log("on pressed");
             Renderer.sprite = PressedSprite;
         }
         if(newIsPressed)//While Pressed
         {
-            Debug.Log("while pressed");
             WhilePressed.Invoke();
         }
         if(!newIsPressed && isPressed)//On Released
         {
-            Debug.Log("on released");
             OnReleased.Invoke();
             Renderer.sprite = UnpressedSprite;
         }

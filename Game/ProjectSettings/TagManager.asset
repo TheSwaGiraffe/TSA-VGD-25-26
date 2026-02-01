@@ -8,14 +8,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Green
   - Water
   - UI
   - Player
   - Death
-  - Bug
-  - 
-  - 
+  - Red
+  - Blue
+  - GreenTrigger
   - 
   - 
   - 

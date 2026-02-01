@@ -607,6 +607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4756688711196234138}
+  - component: {fileID: 7135156793708229160}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -633,6 +634,38 @@ Transform:
   - {fileID: 2811344923707503276}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7135156793708229160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733195340202236562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c8428b6a942834d9567364edf2cf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LayerManager
+  Layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Green
+  - Water
+  - UI
+  - Player
+  - Death
+  - Red
+  - Blue
+  _PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _GroundLayer:
+    serializedVersion: 2
+    m_Bits: 776
+  _DeathLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &1373431001283235207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1339,15 +1372,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.b
-      value: 0.6396825
+      value: 0.53926927
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.g
-      value: 0.4725871
+      value: 0.43155366
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.r
-      value: 0.9882341
+      value: 0.8422833
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileAssetArray.Array.data[2].m_RefCount
@@ -1539,15 +1572,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.b
-      value: 0.49668637
+      value: 0.46131
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.g
-      value: 0.46436578
+      value: 0.42218068
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.r
-      value: 0.9091299
+      value: 0.9580836
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[9].m_RefCount

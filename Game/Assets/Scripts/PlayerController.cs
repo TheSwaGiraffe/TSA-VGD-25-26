@@ -16,11 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform sprite;
     [SerializeField] BoxCollider2D groundedHitbox;
     [SerializeField] BoxCollider2D playerHitbox;
-    [SerializeField] LayerMask GroundLayer;
     [SerializeField] Camera cam;
     [SerializeField] Animator animator;
     [SerializeField] Tilemap GroundTilemap;
-    [SerializeField] LayerMask DeathLayer;
     public GameObject Key;
     Bounds camBounds;
     float screenHeight;
@@ -37,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
         //Use Input
         rb.linearVelocityX = xInput * MoveSpeed;
-        if (jumping && groundedHitbox.IsTouchingLayers(GroundLayer))
+        if (jumping && groundedHitbox.IsTouchingLayers(LayerManager.GroundLayer))
         {
             rb.linearVelocityY = JumpPower;
         }
@@ -53,12 +51,16 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Die();
+        }
 
         //updateSpriteVisual();
         updateCam();
         animator.SetBool("IsMoving", xInput != 0 || jumping); //update animator
 
-        if (playerHitbox.IsTouchingLayers(DeathLayer))
+        if (playerHitbox.IsTouchingLayers(LayerManager.DeathLayer))
         {
             Die();
             Debug.Log("u ded");

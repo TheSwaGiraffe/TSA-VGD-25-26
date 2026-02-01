@@ -11,7 +11,6 @@ public class Door : MonoBehaviour
     [SerializeField] bool _open;
     [SerializeField] int sceneIndex; //Buildindex of the scene that loads when entering the door
     [SerializeField] BoxCollider2D doorCollider;
-    [SerializeField] LayerMask playerLayer;
     bool entered = false;
 
     void Awake()
@@ -20,8 +19,7 @@ public class Door : MonoBehaviour
     }
     void Update()
     {
-        if(entered){Debug.Log("hi");}
-        if (doorCollider.IsTouchingLayers(playerLayer) && !entered)
+        if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && !entered)
         {
             if (!_open)
             {
@@ -41,6 +39,7 @@ public class Door : MonoBehaviour
     }
     IEnumerator LoadNextScene(int index)
     {
+        yield return new WaitForSeconds(3);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index);
         while (!asyncLoad.isDone)
         {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: tileset_1
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 1227461355, guid: d39a9df31db288f499209fcb5e325a2d, type: 3}
+  m_Sprite: {fileID: 1960092959, guid: ab81099edb65bda45ab1a03b25b44c99, type: 3}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_Transform:
     e00: 1
@@ -33,4 +33,4 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 1
+  m_ColliderType: 2

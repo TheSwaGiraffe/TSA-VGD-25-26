@@ -1,20 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class RedBlueUpdater : MonoBehaviour
 {
     #region SingletonStuff
-    static RedBlueUpdater Instance;
+    public static RedBlueUpdater Instance;
     public static bool redActive
     {
         get
         {
-            if (!Instance) { Debug.Log("No RedBlueUpdater Instance"); return true; }
             return Instance._redActive;
         }
         set
         {
-            if (!Instance) { Debug.Log("No RedBlueUpdater Instance"); return;}
             Instance.StartCoroutine(Instance.attemptSetRedActive(value));
         }
     }
@@ -32,6 +31,7 @@ public class RedBlueUpdater : MonoBehaviour
     public Tile[] blueTiles;
     [SerializeField] Sprite[] _onSprites;
     [SerializeField] Sprite[] _offSprites;
+    public List<MovingPlatform> movingPlatforms = new List<MovingPlatform>();
     void Start()
     {
         setRedActive(_redActive);
@@ -47,22 +47,40 @@ public class RedBlueUpdater : MonoBehaviour
 
             _offTiles[i].sprite = _offSprites[i];
         }
-        RedCol.isTrigger = !redActive;
-        BlueCol.isTrigger = redActive;
-        RedCol.gameObject.layer = redActive? 3 : 0;
-        BlueCol.gameObject.layer = redActive? 0 : 3;
+        LayerManager.IgnoreLayerCollision("Player", "Red", !redActive);
+        LayerManager.IgnoreLayerCollision("Player", "Blue", redActive);
+        LayerManager.IgnoreLayerCollision("Green", "Red", !redActive);
+        LayerManager.IgnoreLayerCollision("Green", "Blue", redActive);
         Red.RefreshAllTiles();
         Blue.RefreshAllTiles();
-        Debug.Log("Swapped to "+(redActive? "red" : "blue"));
+
+        foreach(MovingPlatform p in movingPlatforms)
+        {
+            p.active = p.isRed == redActive;
+        }
     }
     IEnumerator attemptSetRedActive(bool value)
     {
         CompositeCollider2D activeCol = value ? RedCol : BlueCol;
-        while (activeCol.IsTouchingLayers(OverlapLayers))
+        while (activeCol.IsTouchingLayers(OverlapLayers) || platformsToucingLayers(movingPlatforms, OverlapLayers))
         {
             yield return new WaitForFixedUpdate();
         }
         setRedActive(value);
+
+        bool platformsToucingLayers(List<MovingPlatform> platforms, int layerMask)
+        {
+            foreach(MovingPlatform p in platforms)
+            {
+                if(p.isRed != value){continue;}//Skip ones that will be turned off
+                if (p.col.IsTouchingLayers(layerMask))
+                {
+                    Debug.Log("platform touchin smth");
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 #if UNITY_EDITOR
     //Reset tiles so Red & Blue are both on in the editor
