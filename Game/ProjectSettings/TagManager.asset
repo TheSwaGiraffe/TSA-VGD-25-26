@@ -16,8 +16,8 @@ TagManager:
   - Red
   - Blue
   - GreenTrigger
-  - 
-  - 
+  - IgnoreRed
+  - IgnoreBlue
   - 
   - 
   - 

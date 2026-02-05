@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
     [Header("Movement Properties")]
     public float MoveSpeed;
     public float JumpPower;
@@ -20,8 +21,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Tilemap GroundTilemap;
     public GameObject Key;
+    [HideInInspector] public Vector2 velocityOffset;
     Bounds camBounds;
     float screenHeight;
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         calculateCamBounds();
@@ -34,10 +40,11 @@ public class PlayerController : MonoBehaviour
         bool swap = Input.GetKeyDown("space");
 
         //Use Input
-        rb.linearVelocityX = xInput * MoveSpeed;
+        rb.linearVelocityX = xInput * MoveSpeed + velocityOffset.x;
+        if(velocityOffset.y != 0){rb.linearVelocityY = velocityOffset.y;}
         if (jumping && groundedHitbox.IsTouchingLayers(LayerManager.GroundLayer))
         {
-            rb.linearVelocityY = JumpPower;
+            rb.linearVelocityY = JumpPower + velocityOffset.y;
         }
         if (swap)
         {
@@ -63,7 +70,6 @@ public class PlayerController : MonoBehaviour
         if (playerHitbox.IsTouchingLayers(LayerManager.DeathLayer))
         {
             Die();
-            Debug.Log("u ded");
         }
     }
     void updateSpriteVisual()

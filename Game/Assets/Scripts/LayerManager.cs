@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using UnityEditor.EditorTools;
 
 public class LayerManager : MonoBehaviour
 {

@@ -820,9 +820,11 @@ MonoBehaviour:
   _redActive: 1
   OverlapLayers:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 1024
+  Green: {fileID: 0}
   Red: {fileID: 4475772640978673746}
   Blue: {fileID: 3436606494004398882}
+  GreenCol: {fileID: 0}
   RedCol: {fileID: 2937929638999440460}
   BlueCol: {fileID: 575085814510920201}
   redTiles:

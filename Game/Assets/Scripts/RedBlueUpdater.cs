@@ -23,8 +23,10 @@ public class RedBlueUpdater : MonoBehaviour
     [Header("References")]
     [Tooltip("Layers of objects that get in the way of swapping")]
     public LayerMask OverlapLayers;
+    public Tilemap Green;
     public Tilemap Red;
     public Tilemap Blue;
+    public CompositeCollider2D GreenCol;
     public CompositeCollider2D RedCol;
     public CompositeCollider2D BlueCol;
     public Tile[] redTiles;

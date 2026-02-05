@@ -1062,6 +1062,10 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3389164471093143876, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: sceneIndex
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4501738189077778616, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_IsActive
       value: 1

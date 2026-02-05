@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Bug : MonoBehaviour
 {
     [SerializeField] float velocity;
-    [SerializeField] BoxCollider2D Hitbox;
+    [SerializeField] Collider2D Hitbox;
     [SerializeField] BoxCollider2D ForwardsHitbox;
     [Tooltip("Bug will 'bounce' off specified layers")]
     [SerializeField] LayerMask ReturnLayers;
