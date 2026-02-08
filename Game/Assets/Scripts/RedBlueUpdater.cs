@@ -33,7 +33,7 @@ public class RedBlueUpdater : MonoBehaviour
     public Tile[] blueTiles;
     [SerializeField] Sprite[] _onSprites;
     [SerializeField] Sprite[] _offSprites;
-    public List<MovingPlatform> movingPlatforms = new List<MovingPlatform>();
+    public List<MovingPlatform> redBluePlatforms = new List<MovingPlatform>();
     void Start()
     {
         setRedActive(_redActive);
@@ -56,15 +56,16 @@ public class RedBlueUpdater : MonoBehaviour
         Red.RefreshAllTiles();
         Blue.RefreshAllTiles();
 
-        foreach(MovingPlatform p in movingPlatforms)
+        foreach(MovingPlatform p in redBluePlatforms)
         {
+            if(p.color == ColColor.Green){continue;}
             p.active = p.isRed == redActive;
         }
     }
     IEnumerator attemptSetRedActive(bool value)
     {
         CompositeCollider2D activeCol = value ? RedCol : BlueCol;
-        while (activeCol.IsTouchingLayers(OverlapLayers) || platformsToucingLayers(movingPlatforms, OverlapLayers))
+        while (activeCol.IsTouchingLayers(OverlapLayers) || platformsToucingLayers(redBluePlatforms, OverlapLayers))
         {
             yield return new WaitForFixedUpdate();
         }
@@ -74,6 +75,7 @@ public class RedBlueUpdater : MonoBehaviour
         {
             foreach(MovingPlatform p in platforms)
             {
+                if(p.color == ColColor.Green){continue;}
                 if(p.isRed != value){continue;}//Skip ones that will be turned off
                 if (p.col.IsTouchingLayers(layerMask))
                 {

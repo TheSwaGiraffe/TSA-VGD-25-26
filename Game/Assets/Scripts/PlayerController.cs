@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Tilemap GroundTilemap;
     public GameObject Key;
-    [HideInInspector] public Vector2 velocityOffset;
+     public Vector2 velocityOffset;
     Bounds camBounds;
     float screenHeight;
     void Awake()
@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour
 
         //Use Input
         rb.linearVelocityX = xInput * MoveSpeed + velocityOffset.x;
-        if(velocityOffset.y != 0){rb.linearVelocityY = velocityOffset.y;}
         if (jumping && groundedHitbox.IsTouchingLayers(LayerManager.GroundLayer))
         {
             rb.linearVelocityY = JumpPower + velocityOffset.y;

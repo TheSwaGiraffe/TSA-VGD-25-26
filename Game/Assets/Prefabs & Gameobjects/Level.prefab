@@ -648,6 +648,7 @@ MonoBehaviour:
   - Death
   - Red
   - Blue
+  - GreenTrigger
   - IgnoreRed
   - IgnoreBlue
   _PlayerLayer:
