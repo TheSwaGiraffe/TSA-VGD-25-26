@@ -1,12 +1,13 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] bool BounceOffWall = true;
-    [SerializeField] Vector2 StartVelocity;
+    [SerializeField] bool LoopPath = false;
+    [SerializeField] Transform[] PathPoints;
     [SerializeField] Vector2Int Size;
+    public float velocity;
     public bool isRed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] bool update = false;
@@ -19,9 +20,10 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] BoxCollider2D bwdHitbox;
     [SerializeField] BoxCollider2D upwHitbox;
     [SerializeField] BoxCollider2D dwnHitbox;
-    bool wasTouchingPlayer = false;
+    int pointIndex;
     public bool active { get=>_active; set => setActive(value);}
     bool _active = true;
+    Vector2 netMovement = Vector2.zero;
     void Start()
     {
         List<MovingPlatform> platforms = RedBlueUpdater.Instance.movingPlatforms;
@@ -31,7 +33,6 @@ public class MovingPlatform : MonoBehaviour
         upwHitbox.gameObject.layer = LayerManager.GetLayerIndex(isRed? "IgnoreBlue" : "IgnoreRed");
         dwnHitbox.gameObject.layer = LayerManager.GetLayerIndex(isRed? "IgnoreBlue" : "IgnoreRed");
         platforms.Add(this);
-        rb.linearVelocity = StartVelocity;
     }
     void setActive(bool value)
     {
@@ -87,43 +88,81 @@ public class MovingPlatform : MonoBehaviour
             t.localPosition = new Vector3(x, y, t.position.z);
         }
     }
-    public void MovePlatform(Vector2 amt)
+    void Update()
     {
-        rb.linearVelocity = amt;
+        if(velocity == 0){return;}
+        Vector2 rbPosOld = rb.position;
+        rb.position = Vector2.MoveTowards(rb.position, PathPoints[pointIndex].position, Mathf.Abs(velocity) * Time.deltaTime);
+        netMovement += rb.position - rbPosOld;
+        if(rb.position.x == PathPoints[pointIndex].position.x && rb.position.y == PathPoints[pointIndex].position.y)
+        {
+            int direction = velocity > 0 ? 1 : -1;
+            pointIndex += direction;
+            if(direction == 1 && pointIndex >= PathPoints.Length)
+            {
+                if (LoopPath)
+                {
+                    pointIndex = 0;
+                    return;
+                }
+                if (BounceOffWall)
+                {
+                    velocity *=-1;
+                    pointIndex = PathPoints.Length-2;
+                    return;
+                }
+                velocity = 0;
+            }
+            if(direction == -1 && pointIndex < 0)
+            {
+                if (LoopPath)
+                {
+                    pointIndex = PathPoints.Length-1;
+                    return;
+                }
+                if (BounceOffWall)
+                {
+                    velocity *= -1;
+                    pointIndex = 1;
+                    return;
+                }
+                velocity = 0;
+            }
+        }
     }
     void FixedUpdate()
     {
         CollideWall();
         if (col.IsTouchingLayers(LayerManager.PlayerLayer))
         {
-            wasTouchingPlayer = true;
-            PlayerController.Instance.velocityOffset = rb.linearVelocity;
+            PlayerController.Instance.rb.position += netMovement;
             Debug.Log($"{PlayerController.Instance.name} velOffset: {rb.linearVelocity}");
         }
-        else
-        {
-            if (wasTouchingPlayer)
-            {
-                PlayerController.Instance.velocityOffset = Vector2.zero;
-            }
-        }
+        netMovement = Vector2.zero;
+    }
+    void Flip()
+    {
+        int direction = velocity > 0 ? 1 : -1;
+        pointIndex -= direction;
+        velocity *= -1;
     }
     void CollideWall()
     {
-        BoxCollider2D Xhitbox = rb.linearVelocityX > 0 ? fwdHitbox : bwdHitbox;
+        BoxCollider2D Xhitbox = netMovement.x > 0 ? fwdHitbox : bwdHitbox;
         if (Xhitbox.IsTouching(RedBlueUpdater.Instance.GreenCol) || Xhitbox.IsTouching(RedBlueUpdater.Instance.RedCol) || Xhitbox.IsTouching(RedBlueUpdater.Instance.BlueCol))
         {
-            rb.linearVelocityX*=-1;
+            Flip();
             if(!BounceOffWall){
-                rb.linearVelocityX = 0;
+                velocity = 0;
             }
+            return;
         }
-        BoxCollider2D Yhitbox = rb.linearVelocityY > 0 ? upwHitbox : dwnHitbox;
+        BoxCollider2D Yhitbox = netMovement.y > 0 ? upwHitbox : dwnHitbox;
         if (Yhitbox.IsTouching(RedBlueUpdater.Instance.GreenCol) || Xhitbox.IsTouching(RedBlueUpdater.Instance.RedCol) || Xhitbox.IsTouching(RedBlueUpdater.Instance.BlueCol))
         {
-            rb.linearVelocityY*=-1;
+            Flip();
             if(!BounceOffWall){
-                rb.linearVelocityY = 0;
+                velocity = 0;
             }
         }
     }
