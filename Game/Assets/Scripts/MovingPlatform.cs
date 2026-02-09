@@ -156,32 +156,36 @@ public class MovingPlatform : MonoBehaviour
 
         if(transform.position.x > maxX)
         {
-            rb.linearVelocityX = Mathf.Abs(rb.linearVelocityX)*-1;
-            if (!BounceOffWall)
+            transform.position = new Vector3(maxX, transform.position.y, transform.position.z);
+            if(BounceOffWall) {rb.linearVelocityX = Mathf.Abs(rb.linearVelocityX)*-1;}
+            else if (rb.linearVelocityX > 0)
             {
                 rb.linearVelocityX = 0;
             }
         }
         if(transform.position.x < minX)
         {
-            rb.linearVelocityX = Mathf.Abs(rb.linearVelocityX);
-            if (!BounceOffWall)
+            transform.position = new Vector3(minX, transform.position.y, transform.position.z);
+            if(BounceOffWall){rb.linearVelocityX = Mathf.Abs(rb.linearVelocityX);}
+            else if (rb.linearVelocityX < 0)
             {
                 rb.linearVelocityX = 0;
             }
         }
         if(transform.position.y > maxY)
         {
-            rb.linearVelocityY = Mathf.Abs(rb.linearVelocityY)*-1;
-            if (!BounceOffWall)
+            transform.position = new Vector3(transform.position.x, maxY, transform.position.z);
+            if(BounceOffWall){rb.linearVelocityY = Mathf.Abs(rb.linearVelocityY)*-1;}
+            else if (rb.linearVelocityY > 0)
             {
                 rb.linearVelocityY = 0;
             }
         }
         if(transform.position.y < minY)
         {
-            rb.linearVelocityY = Mathf.Abs(rb.linearVelocityY);
-            if (!BounceOffWall)
+            transform.position = new Vector3(transform.position.x, minY, transform.position.z);
+            if(BounceOffWall){rb.linearVelocityY = Mathf.Abs(rb.linearVelocityY);}
+            else if (rb.linearVelocityY < 0)
             {
                 rb.linearVelocityY = 0;
             }
