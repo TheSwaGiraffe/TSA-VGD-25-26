@@ -709,7 +709,7 @@ MonoBehaviour:
   bwdHitbox: {fileID: 7581730703418830527}
   upwHitbox: {fileID: 7425319110449801045}
   dwnHitbox: {fileID: 2974786578905890879}
-  greenTrigger: {fileID: 2867044492008188376}
+  noOverlapRedBlue: {fileID: 2867044492008188376}
 --- !u!61 &8778687678455902059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 4195301649673397804}
   - component: {fileID: 2867044492008188376}
   m_Layer: 10
-  m_Name: GreenTrigger
+  m_Name: NoOverlapRedBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

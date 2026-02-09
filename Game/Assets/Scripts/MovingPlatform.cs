@@ -21,7 +21,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] BoxCollider2D bwdHitbox;
     [SerializeField] BoxCollider2D upwHitbox;
     [SerializeField] BoxCollider2D dwnHitbox;
-    [SerializeField] BoxCollider2D greenTrigger;
+    [SerializeField] BoxCollider2D noOverlapRedBlue;
     bool wasTouchingPlayer = false;
     public bool active { get=>_active; set => setActive(value);}
     public bool isRed {get=> color == ColColor.Red;}
@@ -29,7 +29,7 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         if(color != ColColor.Green){
-            Destroy(greenTrigger.gameObject);
+            Destroy(noOverlapRedBlue.gameObject);
             gameObject.layer = LayerManager.GetLayerIndex(isRed? "Red" : "Blue");
             fwdHitbox.gameObject.layer = LayerManager.GetLayerIndex(isRed? "IgnoreBlue" : "IgnoreRed");
             bwdHitbox.gameObject.layer = LayerManager.GetLayerIndex(isRed? "IgnoreBlue" : "IgnoreRed");
@@ -60,7 +60,7 @@ public class MovingPlatform : MonoBehaviour
     void updatePlatform()
     {
         col.size = new Vector2(Size.x, Size.y)*0.25f;
-        greenTrigger.size = col.size;
+        noOverlapRedBlue.size = col.size;
         fwdHitbox.size = new Vector2(Size.x/2, Size.y-0.5f)*0.25f;
         bwdHitbox.size = fwdHitbox.size;
         upwHitbox.size = new Vector2(Size.x-0.5f, Size.y/2)*0.25f;
@@ -128,7 +128,7 @@ public class MovingPlatform : MonoBehaviour
     void CollideWall()
     {
         BoxCollider2D Xhitbox = rb.linearVelocityX > 0 ? fwdHitbox : bwdHitbox;
-        if (Xhitbox.IsTouching(RedBlueUpdater.Instance.GreenCol) || Xhitbox.IsTouching(RedBlueUpdater.Instance.RedCol) || Xhitbox.IsTouching(RedBlueUpdater.Instance.BlueCol))
+        if (TouchingWall(Xhitbox))
         {
             rb.linearVelocityX*=-1;
             if(!BounceOffWall){
@@ -136,12 +136,20 @@ public class MovingPlatform : MonoBehaviour
             }
         }
         BoxCollider2D Yhitbox = rb.linearVelocityY > 0 ? upwHitbox : dwnHitbox;
-        if (Yhitbox.IsTouching(RedBlueUpdater.Instance.GreenCol) || Xhitbox.IsTouching(RedBlueUpdater.Instance.RedCol) || Xhitbox.IsTouching(RedBlueUpdater.Instance.BlueCol))
+        if (TouchingWall(Yhitbox))
         {
             rb.linearVelocityY*=-1;
             if(!BounceOffWall){
                 rb.linearVelocityY = 0;
             }
+        }
+        bool TouchingWall(Collider2D hitbox)
+        {
+            foreach(Collider2D wall in LayerManager.Instance.Walls)
+            {
+                if(hitbox.IsTouching(wall)){ return true; }
+            }
+            return false;
         }
     }
     void CollideBoundingBox()

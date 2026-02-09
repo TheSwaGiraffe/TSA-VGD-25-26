@@ -648,9 +648,10 @@ MonoBehaviour:
   - Death
   - Red
   - Blue
-  - GreenTrigger
+  - NoOverlapRedBlue
   - IgnoreRed
   - IgnoreBlue
+  - GreenTrigger
   _PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -660,6 +661,10 @@ MonoBehaviour:
   _DeathLayer:
     serializedVersion: 2
     m_Bits: 128
+  Walls:
+  - {fileID: 6312055546450653294}
+  - {fileID: 6382467800184475645}
+  - {fileID: 8623714159855423928}
 --- !u!1001 &1373431001283235207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1366,15 +1371,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.b
-      value: 0.3519039
+      value: 0.43276143
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.g
-      value: 0.33542398
+      value: 0.4277653
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.r
-      value: 0.7131467
+      value: 0.89689773
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileAssetArray.Array.data[2].m_RefCount
@@ -1566,15 +1571,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.b
-      value: 0.59535307
+      value: 0.4926321
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.g
-      value: 0.5131693
+      value: 0.38573182
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.r
-      value: 0.81537986
+      value: 0.8694817
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[9].m_RefCount
@@ -1745,6 +1750,16 @@ PrefabInstance:
 --- !u!4 &1381286599956956136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7169127039256719449, guid: 6b694d185984767418c5661a520d5e43, type: 3}
+  m_PrefabInstance: {fileID: 8094811135242040241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!66 &6382467800184475645 stripped
+CompositeCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2937929638999440460, guid: 6b694d185984767418c5661a520d5e43, type: 3}
+  m_PrefabInstance: {fileID: 8094811135242040241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!66 &8623714159855423928 stripped
+CompositeCollider2D:
+  m_CorrespondingSourceObject: {fileID: 575085814510920201, guid: 6b694d185984767418c5661a520d5e43, type: 3}
   m_PrefabInstance: {fileID: 8094811135242040241}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8266288737502043840

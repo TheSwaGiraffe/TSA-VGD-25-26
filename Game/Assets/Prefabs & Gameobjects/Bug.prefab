@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 629887242387707005}
   - component: {fileID: 5075702374483328210}
   m_Layer: 10
-  m_Name: GreenTrigger
+  m_Name: NoOverlapRedBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

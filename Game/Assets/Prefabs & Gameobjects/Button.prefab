@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3150807470468903034}
   - component: {fileID: 1339713813358017873}
   - component: {fileID: 2120048277061336731}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
         m_CallState: 2
   PressableLayers:
     serializedVersion: 2
-    m_Bits: 328
+    m_Bits: 840
   UnpressedSprite: {fileID: 1330995631, guid: 87673a04d054f2f40a4afc0e343d42b9, type: 3}
   PressedSprite: {fileID: 1414183734, guid: 87673a04d054f2f40a4afc0e343d42b9, type: 3}
   Renderer: {fileID: 3150807470468903034}

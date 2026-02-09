@@ -53,6 +53,8 @@ public class RedBlueUpdater : MonoBehaviour
         LayerManager.IgnoreLayerCollision("Player", "Blue", redActive);
         LayerManager.IgnoreLayerCollision("Green", "Red", !redActive);
         LayerManager.IgnoreLayerCollision("Green", "Blue", redActive);
+        LayerManager.IgnoreLayerCollision("GreenTrigger", "Red", !redActive);
+        LayerManager.IgnoreLayerCollision("GreenTrigger", "Blue", redActive);
         Red.RefreshAllTiles();
         Blue.RefreshAllTiles();
 

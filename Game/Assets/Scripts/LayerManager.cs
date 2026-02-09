@@ -15,6 +15,8 @@ public class LayerManager : MonoBehaviour
     public LayerMask _GroundLayer;
     [Tooltip("Layer that resets the player when touched")]
     public LayerMask _DeathLayer;
+    [Tooltip("Things that moving platforms consider walls")]
+    public Collider2D[] Walls;
     public static LayerMask PlayerLayer{get=> Instance._PlayerLayer;}
     public static LayerMask GroundLayer{get=> Instance._GroundLayer;}
     public static LayerMask DeathLayer{get=> Instance._DeathLayer;}

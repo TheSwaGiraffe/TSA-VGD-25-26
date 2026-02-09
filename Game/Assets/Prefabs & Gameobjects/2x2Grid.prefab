@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2658460611373150811}
   - component: {fileID: 3436606494004398882}
   - component: {fileID: 8824180661490253296}
+  - component: {fileID: 575085814510920201}
   - component: {fileID: 346949541396406438}
   - component: {fileID: 6703442727885709064}
-  - component: {fileID: 575085814510920201}
   m_Layer: 9
   m_Name: Blue
   m_TagString: Untagged
@@ -175,7 +175,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   - m_RefCount: 1
-    m_Data: {r: 0.9218304, g: 0.45130038, b: 0.58868, a: 1}
+    m_Data: {r: 0.798933, g: 0.5508032, b: 0.5981125, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -255,6 +255,65 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!66 &575085814510920201
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634778696451529395}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 1
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 346949541396406438}
+    m_ColliderPaths:
+    - - X: 1552499968
+        Y: -897500032
+      - X: 1550000000
+        Y: -897500032
+      - X: 1550000000
+        Y: -900000000
+      - X: 1552499968
+        Y: -900000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 155.24997, y: -90}
+      - {x: 155.24997, y: -89.75001}
+      - {x: 155, y: -89.75004}
+      - {x: 155.00003, y: -90}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 1634778696451529395}
 --- !u!19719996 &346949541396406438
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -320,65 +379,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!66 &575085814510920201
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634778696451529395}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 1
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 346949541396406438}
-    m_ColliderPaths:
-    - - X: 1552499968
-        Y: -897500032
-      - X: 1550000000
-        Y: -897500032
-      - X: 1550000000
-        Y: -900000000
-      - X: 1552499968
-        Y: -900000000
-  m_CompositePaths:
-    m_Paths:
-    - - {x: 155.24997, y: -90}
-      - {x: 155.24997, y: -89.75001}
-      - {x: 155, y: -89.75004}
-      - {x: 155.00003, y: -90}
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
-  m_UseDelaunayMesh: 0
-  m_CompositeGameObject: {fileID: 1634778696451529395}
 --- !u!1 &1950737238809767196
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,9 +390,9 @@ GameObject:
   - component: {fileID: 3136435398940456814}
   - component: {fileID: 4475772640978673746}
   - component: {fileID: 4986256608163186488}
+  - component: {fileID: 2937929638999440460}
   - component: {fileID: 6292924557211582339}
   - component: {fileID: 5683653421128597839}
-  - component: {fileID: 2937929638999440460}
   m_Layer: 8
   m_Name: Red
   m_TagString: Untagged
@@ -554,7 +554,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: 7.0836e-41, g: 7.0836e-41, b: 7.0836e-41, a: 7.0836e-41}
   - m_RefCount: 1
-    m_Data: {r: 0.8942606, g: 0.5893814, b: 0.67827606, a: 1}
+    m_Data: {r: 0.7350987, g: 0.44339472, b: 0.5252971, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -634,6 +634,65 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!66 &2937929638999440460
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950737238809767196}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 1
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 6292924557211582339}
+    m_ColliderPaths:
+    - - X: 1552499968
+        Y: -897500032
+      - X: 1550000000
+        Y: -897500032
+      - X: 1550000000
+        Y: -900000000
+      - X: 1552499968
+        Y: -900000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 155.24997, y: -90}
+      - {x: 155.24997, y: -89.75001}
+      - {x: 155, y: -89.75004}
+      - {x: 155.00003, y: -90}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 1950737238809767196}
 --- !u!19719996 &6292924557211582339
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -699,65 +758,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!66 &2937929638999440460
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950737238809767196}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 1
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 6292924557211582339}
-    m_ColliderPaths:
-    - - X: 1552499968
-        Y: -897500032
-      - X: 1550000000
-        Y: -897500032
-      - X: 1550000000
-        Y: -900000000
-      - X: 1552499968
-        Y: -900000000
-  m_CompositePaths:
-    m_Paths:
-    - - {x: 155.24997, y: -90}
-      - {x: 155.24997, y: -89.75001}
-      - {x: 155, y: -89.75004}
-      - {x: 155.00003, y: -90}
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
-  m_UseDelaunayMesh: 0
-  m_CompositeGameObject: {fileID: 1950737238809767196}
 --- !u!1 &7444373592664345812
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,4 +895,4 @@ MonoBehaviour:
   - {fileID: -1462922501, guid: bcc7d234e542aac46a0f8976c886058a, type: 3}
   - {fileID: -835585202, guid: bcc7d234e542aac46a0f8976c886058a, type: 3}
   - {fileID: -2067400863, guid: bcc7d234e542aac46a0f8976c886058a, type: 3}
-  movingPlatforms: []
+  redBluePlatforms: []
