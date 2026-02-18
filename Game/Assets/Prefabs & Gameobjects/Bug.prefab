@@ -191,7 +191,7 @@ MonoBehaviour:
   ForwardsHitbox: {fileID: 8914716070750504963}
   ReturnLayers:
     serializedVersion: 2
-    m_Bits: 840
+    m_Bits: 841
   rb: {fileID: 7280753664861421076}
 --- !u!50 &7280753664861421076
 Rigidbody2D:

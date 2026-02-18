@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8884477079548234312}
   - component: {fileID: 8143510081337671614}
   - component: {fileID: 5593557687397866530}
+  - component: {fileID: 321365763746087122}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -128,12 +129,15 @@ MonoBehaviour:
   CenterCam: 0
   ResizeCam: 0
   rb: {fileID: 2640242090143709984}
+  ren: {fileID: 2184782731298937308}
   sprite: {fileID: 6185104889338879732}
   groundedHitbox: {fileID: 5593557687397866530}
   playerHitbox: {fileID: 8884477079548234312}
   cam: {fileID: 0}
   animator: {fileID: 8308720911199804891}
   GroundTilemap: {fileID: 0}
+  NoOverlapRedBlue: {fileID: 970881293178386560}
+  teleportable: {fileID: 321365763746087122}
   Key: {fileID: 4874739686298629335}
   velocityOffset: {x: 0, y: 0}
 --- !u!61 &5593557687397866530
@@ -182,6 +186,35 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.875, y: 0.125}
   m_EdgeRadius: 0
+--- !u!114 &321365763746087122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166013305427441072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a4b6bfa88e2634f8b6d1169b590818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Teleportable
+  _color: 2
+  OverrideOnSetColor:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8143510081337671614}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  col: {fileID: 8884477079548234312}
 --- !u!1 &4725849685577882755
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,12 +296,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4334783836991956000, guid: af483698362da4d48b4ccc72aa32280e, type: 3}
+  m_Sprite: {fileID: -2311659948842064771, guid: af483698362da4d48b4ccc72aa32280e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.08, y: 0.16}
+  m_Size: {x: 0.5, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

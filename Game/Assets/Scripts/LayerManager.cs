@@ -37,3 +37,9 @@ public class LayerManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(i1, i2, ignore);
     }
 }
+[Serializable] public enum ColColor
+{
+    Red,
+    Blue,
+    Green 
+}

@@ -115,7 +115,6 @@ public class MovingPlatform : MonoBehaviour
         {
             wasTouchingPlayer = true;
             PlayerController.Instance.velocityOffset = rb.linearVelocity;
-            Debug.Log($"{PlayerController.Instance.name} velOffset: {rb.linearVelocity}");
         }
         else
         {
@@ -210,10 +209,4 @@ public class MovingPlatform : MonoBehaviour
         }
     }
     #endif
-}
-public enum ColColor
-{
-    Red,
-    Blue,
-    Green 
 }

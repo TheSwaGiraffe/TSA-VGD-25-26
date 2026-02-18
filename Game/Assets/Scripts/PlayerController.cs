@@ -12,18 +12,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector2 CamPadding;
     [SerializeField] bool CenterCam = false;
     [SerializeField] bool ResizeCam = false;
+    [Header("Other Properties")]
     [Header("References")]
     public Rigidbody2D rb;
+    [SerializeField] SpriteRenderer ren;
     [SerializeField] Transform sprite;
     [SerializeField] BoxCollider2D groundedHitbox;
     [SerializeField] BoxCollider2D playerHitbox;
     [SerializeField] Camera cam;
     [SerializeField] Animator animator;
     [SerializeField] Tilemap GroundTilemap;
+    [SerializeField] Collider2D NoOverlapRedBlue;
+    public Teleportable teleportable;
     public GameObject Key;
-     public Vector2 velocityOffset;
+    public Vector2 velocityOffset;
     Bounds camBounds;
     float screenHeight;
+    bool isJumping;
     void Awake()
     {
         Instance = this;
@@ -41,9 +46,11 @@ public class PlayerController : MonoBehaviour
 
         //Use Input
         rb.linearVelocityX = xInput * MoveSpeed + velocityOffset.x;
+        if(groundedHitbox.IsTouchingLayers(LayerManager.GroundLayer)){isJumping = false;}
         if (jumping && groundedHitbox.IsTouchingLayers(LayerManager.GroundLayer))
         {
             rb.linearVelocityY = JumpPower + velocityOffset.y;
+            isJumping = true;
         }
         if (swap)
         {
@@ -65,10 +72,30 @@ public class PlayerController : MonoBehaviour
         //updateSpriteVisual();
         updateCam();
         animator.SetBool("IsMoving", xInput != 0 || jumping); //update animator
+        animator.SetBool("IsJumping", isJumping);
 
         if (playerHitbox.IsTouchingLayers(LayerManager.DeathLayer))
         {
             Die();
+        }
+    }
+    public void OnSetColor()
+    {
+        NoOverlapRedBlue.gameObject.SetActive(true);
+        ren.color = new Color(1, 1, 1);
+        RedBlueUpdater.Instance.setRedActive(RedBlueUpdater.redActive);
+
+        if(teleportable.color == ColColor.Red){
+            LayerManager.IgnoreLayerCollision("Player", "Blue", true);
+            LayerManager.IgnoreLayerCollision("Player", "Red", false);
+            NoOverlapRedBlue.gameObject.SetActive(false);
+            ren.color = new Color(1, 0.25f, 0.25f);
+        }
+        if(teleportable.color == ColColor.Blue){
+            LayerManager.IgnoreLayerCollision("Player", "Red", true);
+            LayerManager.IgnoreLayerCollision("Player", "Blue", false);
+            NoOverlapRedBlue.gameObject.SetActive(false);
+            ren.color = new Color(0.25f, 0.25f, 1);
         }
     }
     void updateSpriteVisual()

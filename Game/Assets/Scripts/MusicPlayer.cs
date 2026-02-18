@@ -24,13 +24,11 @@ public class MusicPlayer : MonoBehaviour
     }
     IEnumerator PlaySongs()
     {
-        Debug.Log("Playing Songs");
         while(true){
             AudioSource next = Songs[Random.Range(0, Songs.Length)];
             while(next == current)
             {
                 next = Songs[Random.Range(1, Songs.Length)];
-                Debug.Log(next.gameObject.name);
             }
             current = next;
             float songLength = current.clip.length;
@@ -41,8 +39,7 @@ public class MusicPlayer : MonoBehaviour
     }
     void OnDestroy()
     {
-        Debug.Log("Bye");
-        current.Stop();
+        if(current){current.Stop();}
         StopCoroutine(PlaySongs());
     }
 }

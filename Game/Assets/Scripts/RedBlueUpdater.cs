@@ -49,8 +49,11 @@ public class RedBlueUpdater : MonoBehaviour
 
             _offTiles[i].sprite = _offSprites[i];
         }
-        LayerManager.IgnoreLayerCollision("Player", "Red", !redActive);
-        LayerManager.IgnoreLayerCollision("Player", "Blue", redActive);
+        if(PlayerController.Instance.teleportable.color == ColColor.Green)
+        {
+            LayerManager.IgnoreLayerCollision("Player", "Red", !redActive);
+            LayerManager.IgnoreLayerCollision("Player", "Blue", redActive);
+        }
         LayerManager.IgnoreLayerCollision("Green", "Red", !redActive);
         LayerManager.IgnoreLayerCollision("Green", "Blue", redActive);
         LayerManager.IgnoreLayerCollision("GreenTrigger", "Red", !redActive);
@@ -81,7 +84,6 @@ public class RedBlueUpdater : MonoBehaviour
                 if(p.isRed != value){continue;}//Skip ones that will be turned off
                 if (p.col.IsTouchingLayers(layerMask))
                 {
-                    Debug.Log("platform touchin smth");
                     return true;
                 }
             }

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7800386720263024262}
   - component: {fileID: 5037075401869057679}
   - component: {fileID: 1997620390661317446}
+  - component: {fileID: 5828070405158453913}
+  - component: {fileID: 7654997629466556643}
   m_Layer: 3
   m_Name: Box
   m_TagString: Untagged
@@ -166,6 +168,50 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &5828070405158453913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675713557530037727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a4b6bfa88e2634f8b6d1169b590818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Teleportable
+  _color: 2
+  OverrideOnSetColor:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7654997629466556643}
+        m_TargetAssemblyTypeName: Box, Assembly-CSharp
+        m_MethodName: OnSetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  col: {fileID: 5037075401869057679}
+--- !u!114 &7654997629466556643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675713557530037727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501a579d09c2f994d853888280c894bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Box
+  NoOverlapRedBlue: {fileID: 7375248579268120869}
+  teleportable: {fileID: 5828070405158453913}
+  ren: {fileID: 7800386720263024262}
 --- !u!1 &5644810485106537089
 GameObject:
   m_ObjectHideFlags: 0
