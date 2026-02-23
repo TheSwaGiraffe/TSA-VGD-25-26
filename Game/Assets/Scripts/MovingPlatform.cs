@@ -28,7 +28,7 @@ public class MovingPlatform : MonoBehaviour
     bool _active = true;
     void Start()
     {
-        if(color != ColColor.Green){
+        if(color != ColColor.White){
             Destroy(noOverlapRedBlue.gameObject);
             gameObject.layer = LayerManager.GetLayerIndex(isRed? "Red" : "Blue");
             fwdHitbox.gameObject.layer = LayerManager.GetLayerIndex(isRed? "IgnoreBlue" : "IgnoreRed");
@@ -39,17 +39,17 @@ public class MovingPlatform : MonoBehaviour
         }
         else
         {
-            gameObject.layer = LayerManager.GetLayerIndex("Green");
-            fwdHitbox.gameObject.layer = LayerManager.GetLayerIndex("Green");
-            bwdHitbox.gameObject.layer = LayerManager.GetLayerIndex("Green");
-            upwHitbox.gameObject.layer = LayerManager.GetLayerIndex("Green");
-            dwnHitbox.gameObject.layer = LayerManager.GetLayerIndex("Green");
+            gameObject.layer = LayerManager.GetLayerIndex("Default");
+            fwdHitbox.gameObject.layer = LayerManager.GetLayerIndex("Default");
+            bwdHitbox.gameObject.layer = LayerManager.GetLayerIndex("Default");
+            upwHitbox.gameObject.layer = LayerManager.GetLayerIndex("Default");
+            dwnHitbox.gameObject.layer = LayerManager.GetLayerIndex("Default");
         }
         rb.linearVelocity = StartVelocity;
     }
     void setActive(bool value)
     {
-        if(color == ColColor.Green){return;}
+        if(color == ColColor.White){return;}
         _active = value;
         Sprite[] newSprites = active? On : Off;
         for(int i = 0; i < Pieces.Length; i++)
@@ -95,8 +95,8 @@ public class MovingPlatform : MonoBehaviour
 
         foreach(SpriteRenderer r in PieceSpriteRenderers)
         {
-            r.color = isRed? new Color(1, 0, 0) : new Color(0, 0, 1);
-            if(color == ColColor.Green){r.color = new Color(0, 1, 0);}
+            r.color = isRed? ColorManager.Red : ColorManager.Blue;
+            if(color == ColColor.White){r.color = ColorManager.Green;}
         }
         void UpdPos(Transform t, float x, float y)
         {

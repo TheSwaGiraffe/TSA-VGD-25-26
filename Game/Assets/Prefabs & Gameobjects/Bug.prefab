@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1104516597, guid: 58fc545dcc301e7489b7993b1e8d8182, type: 3}
-  m_Color: {r: 0.5921569, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.82641506, g: 0.82641506, b: 0.82641506, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -168,8 +168,8 @@ PolygonCollider2D:
     - - {x: -0.375, y: 0.25}
       - {x: -0.4375, y: 0.1875}
       - {x: -0.4375, y: -0.1875}
-      - {x: -0.375, y: -0.25}
-      - {x: 0.375, y: -0.25}
+      - {x: -0.375, y: -0.23}
+      - {x: 0.375, y: -0.23}
       - {x: 0.4375, y: -0.1875}
       - {x: 0.4375, y: 0.1875}
       - {x: 0.375, y: 0.25}

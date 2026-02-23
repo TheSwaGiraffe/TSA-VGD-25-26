@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: TileBlue_6
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: -1968489453, guid: bcc7d234e542aac46a0f8976c886058a, type: 3}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 27111312, guid: 076abfbb713d57340aa6737b35727d4a, type: 3}
+  m_Color: {r: 0.27450982, g: 0.27450982, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0

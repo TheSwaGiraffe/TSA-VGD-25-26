@@ -7,6 +7,7 @@ public class Teleportable : MonoBehaviour
     public ColColor color {get => _color; set => OnSetColor(value);}
     public ColColor _color;
     public UnityEvent OverrideOnSetColor;
+    public UnityEvent OnSetRedActive;
     public Collider2D col;
     public static List<Collider2D> cols = new List<Collider2D>();
     bool started = false;
@@ -15,6 +16,7 @@ public class Teleportable : MonoBehaviour
         started = true;
         OnSetColor(color);
         cols.Add(col);
+        RedBlueUpdater.Instance.teleportables.Add(this);
     }
     public void OnSetColor(ColColor newColor)
     {
@@ -25,6 +27,7 @@ public class Teleportable : MonoBehaviour
             if(OverrideOnSetColor.GetPersistentTarget(i) != null)
             {
                 OverrideOnSetColor.Invoke();
+                OnSetRedActive.Invoke();
                 return;
             }
         }
@@ -34,6 +37,7 @@ public class Teleportable : MonoBehaviour
     public void DefaultOnSetColor()
     {
         gameObject.layer = LayerManager.GetLayerIndex(color.ToString());
+        OnSetRedActive.Invoke();
     }
 #if UNITY_EDITOR
     ColColor previousColor;

@@ -831,7 +831,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
+      m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
@@ -841,7 +841,7 @@ Tilemap:
       m_TileIndex: 3
       m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
+      m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
@@ -851,7 +851,7 @@ Tilemap:
       m_TileIndex: 2
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
+      m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
@@ -861,7 +861,7 @@ Tilemap:
       m_TileIndex: 3
       m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
+      m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
@@ -904,8 +904,10 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: 1.65e-43, g: 1.65e-43, b: 1.65e-43, a: 1.65e-43}
   - m_RefCount: 4
-    m_Data: {r: 0, g: 1, b: 0, a: 1}
+    m_Data: {r: 0.09019608, g: 1, b: 0.45490196, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2032,6 +2034,10 @@ PrefabInstance:
     - target: {fileID: 2212924409177912822, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: orthographic size
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3389164471093143876, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: sceneIndex
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4756688711196234138, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_LocalPosition.x

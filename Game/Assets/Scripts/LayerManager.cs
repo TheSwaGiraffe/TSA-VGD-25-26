@@ -41,5 +41,5 @@ public class LayerManager : MonoBehaviour
 {
     Red,
     Blue,
-    Green 
+    White 
 }

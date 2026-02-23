@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 139139247, guid: 587cde75342b4624e9da8d52a8eca46b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.09019608, g: 1, b: 0.45490196, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   _open: 1
   doorCollider: {fileID: 911023088283971079}
   isVerticalPortal: 0
+  ren: {fileID: 6748982707444802339}
 --- !u!95 &630446868856127321
 Animator:
   serializedVersion: 7

@@ -14,6 +14,7 @@ public class Portal : MonoBehaviour
     List<Collider2D> Left = new List<Collider2D>();
     List<Collider2D> Up = new List<Collider2D>();
     List<Collider2D> Down = new List<Collider2D>();
+    [SerializeField] SpriteRenderer ren;
     bool entered = false;
 
     void Awake()
@@ -107,6 +108,8 @@ public class Portal : MonoBehaviour
         {
             Open = Open;
         }
+        ren.color = color == ColColor.Red ? ColorManager.Red : ColorManager.Blue;
+        if(color == ColColor.White){ ren.color = ColorManager.White;}
     }
 #endif
 }

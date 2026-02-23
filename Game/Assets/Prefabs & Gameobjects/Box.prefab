@@ -196,6 +196,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnSetRedActive:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7654997629466556643}
+        m_TargetAssemblyTypeName: Box, Assembly-CSharp
+        m_MethodName: OnSetRedActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   col: {fileID: 5037075401869057679}
 --- !u!114 &7654997629466556643
 MonoBehaviour:
@@ -212,6 +227,8 @@ MonoBehaviour:
   NoOverlapRedBlue: {fileID: 7375248579268120869}
   teleportable: {fileID: 5828070405158453913}
   ren: {fileID: 7800386720263024262}
+  on: {fileID: 4727633781103762509, guid: 3116fffb94a54dc418cf865712a0cc44, type: 3}
+  off: {fileID: 619647250, guid: 3116fffb94a54dc418cf865712a0cc44, type: 3}
 --- !u!1 &5644810485106537089
 GameObject:
   m_ObjectHideFlags: 0

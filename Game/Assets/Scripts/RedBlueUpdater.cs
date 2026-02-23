@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Loading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class RedBlueUpdater : MonoBehaviour
@@ -34,6 +35,7 @@ public class RedBlueUpdater : MonoBehaviour
     [SerializeField] Sprite[] _onSprites;
     [SerializeField] Sprite[] _offSprites;
     public List<MovingPlatform> redBluePlatforms = new List<MovingPlatform>();
+    public List<Teleportable> teleportables = new List<Teleportable>();
     void Start()
     {
         setRedActive(_redActive);
@@ -49,10 +51,18 @@ public class RedBlueUpdater : MonoBehaviour
 
             _offTiles[i].sprite = _offSprites[i];
         }
-        if(PlayerController.Instance.teleportable.color == ColColor.Green)
+        if(PlayerController.Instance.teleportable.color == ColColor.White)
         {
             LayerManager.IgnoreLayerCollision("Player", "Red", !redActive);
             LayerManager.IgnoreLayerCollision("Player", "Blue", redActive);
+        }
+        if(PlayerController.Instance.teleportable.color == ColColor.Red)
+        {
+            LayerManager.IgnoreLayerCollision("Green", "Player", !redActive);
+        }
+        if(PlayerController.Instance.teleportable.color == ColColor.Blue)
+        {
+            LayerManager.IgnoreLayerCollision("Green", "Player", redActive);
         }
         LayerManager.IgnoreLayerCollision("Green", "Red", !redActive);
         LayerManager.IgnoreLayerCollision("Green", "Blue", redActive);
@@ -63,8 +73,13 @@ public class RedBlueUpdater : MonoBehaviour
 
         foreach(MovingPlatform p in redBluePlatforms)
         {
-            if(p.color == ColColor.Green){continue;}
+            if(p.color == ColColor.White){continue;}
             p.active = p.isRed == redActive;
+        }
+        foreach(Teleportable teleportable in teleportables)
+        {
+            if(teleportable.color == ColColor.White) { continue; }
+            teleportable.OnSetRedActive.Invoke();
         }
     }
     IEnumerator attemptSetRedActive(bool value)
@@ -80,7 +95,7 @@ public class RedBlueUpdater : MonoBehaviour
         {
             foreach(MovingPlatform p in platforms)
             {
-                if(p.color == ColColor.Green){continue;}
+                if(p.color == ColColor.White){continue;}
                 if(p.isRed != value){continue;}//Skip ones that will be turned off
                 if (p.col.IsTouchingLayers(layerMask))
                 {

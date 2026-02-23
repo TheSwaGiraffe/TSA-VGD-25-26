@@ -1179,6 +1179,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -59
       objectReference: {fileID: 0}
+    - target: {fileID: 2212924409177912822, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3389164471093143876, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: _open
       value: 0
@@ -2270,6 +2274,14 @@ PrefabInstance:
     - target: {fileID: 5641788045650318307, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_Tiles.Array.data[32].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233683723494330266, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233683723494330266, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6312055546450653294, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -4099,6 +4111,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[3].Y
       value: 40000000
       objectReference: {fileID: 0}
+    - target: {fileID: 6869236972105931446, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: CenterCam
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6910717222999865491, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_Size.y
       value: 384
@@ -5385,7 +5401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9058735140694167355, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_Size.x
-      value: 33
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 9058735140694167355, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_Size.y

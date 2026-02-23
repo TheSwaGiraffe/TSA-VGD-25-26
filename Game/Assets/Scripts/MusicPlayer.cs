@@ -3,18 +3,13 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
+    static MusicPlayer Instance;
     [SerializeField] AudioSource[] Songs;
     AudioSource current;
     void Awake()
     {
-        foreach(MusicPlayer player in FindObjectsByType<MusicPlayer>(FindObjectsSortMode.None))
-        {
-            if(player == this)
-            {
-                continue;
-            }
-            Destroy(player);
-        }
+        if(Instance){Destroy(Instance.transform.parent.gameObject);}
+        Instance = this;
         DontDestroyOnLoad(transform.parent.gameObject);
     }
     public void StartPlayingSongs()
@@ -25,14 +20,14 @@ public class MusicPlayer : MonoBehaviour
     IEnumerator PlaySongs()
     {
         while(true){
-            AudioSource next = Songs[Random.Range(0, Songs.Length)];
+            AudioSource next = Songs[Random.Range(1, Songs.Length)];
             while(next == current)
             {
                 next = Songs[Random.Range(1, Songs.Length)];
             }
             current = next;
             float songLength = current.clip.length;
-            current.Play(0);
+            current.Play();
             yield return new WaitForSeconds(songLength);
             yield return new WaitForSeconds(10);
         }

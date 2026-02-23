@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,8 +8,10 @@ public class Door : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] bool _open;
     [SerializeField] int sceneIndex; //Buildindex of the scene that loads when entering the door
+    [SerializeField] Terminal.Cutscene cutscene = Terminal.Cutscene.Select; //Alternatively play a cutscene upon entering
     [SerializeField] BoxCollider2D doorCollider;
     bool entered = false;
+    float cooldown = 0;
 
     void Awake()
     {
@@ -19,7 +19,8 @@ public class Door : MonoBehaviour
     }
     void Update()
     {
-        if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && !entered)
+        cooldown -= Time.deltaTime;
+        if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && !entered && cooldown <= 0)
         {
             if (!_open)
             {
@@ -27,24 +28,24 @@ public class Door : MonoBehaviour
                 if (player.Key.activeSelf)
                 {
                     Open = true;
+                    cooldown = 2.5f;
+                    player.Key.SetActive(false);
+                    return;
                 }
                 else
                 {
                     return;
                 }
             }
-            StartCoroutine(LoadNextScene(sceneIndex));
+            StartCoroutine(Enter());
             entered = true;
         }
     }
-    IEnumerator LoadNextScene(int index)
+    IEnumerator Enter()
     {
-        yield return new WaitForSeconds(3);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index);
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
+        yield return new WaitForSeconds(0.5f);
+        if(cutscene != Terminal.Cutscene.Select){ Terminal.PlayCutscene(cutscene);}
+        if(sceneIndex != -1){ SceneManager.LoadScene(sceneIndex); }
     }
 #if UNITY_EDITOR
     void OnValidate()
