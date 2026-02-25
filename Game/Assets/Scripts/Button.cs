@@ -1,6 +1,4 @@
-using UnityEditor.EditorTools;
 using UnityEngine;
-using UnityEngine.Accessibility;
 using UnityEngine.Events;
 
 public class Button : MonoBehaviour
