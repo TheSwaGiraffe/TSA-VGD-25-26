@@ -178,7 +178,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d536b6ca70a0f7544a86ab984ac053d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 64
   col: {fileID: 2321118747930675052}

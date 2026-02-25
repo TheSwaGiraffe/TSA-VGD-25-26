@@ -58,14 +58,14 @@ public class RedBlueUpdater : MonoBehaviour
         }
         if(PlayerController.Instance.teleportable.color == ColColor.Red)
         {
-            LayerManager.IgnoreLayerCollision("Green", "Player", !redActive);
+            LayerManager.IgnoreLayerCollision("White", "Player", !redActive);
         }
         if(PlayerController.Instance.teleportable.color == ColColor.Blue)
         {
-            LayerManager.IgnoreLayerCollision("Green", "Player", redActive);
+            LayerManager.IgnoreLayerCollision("White", "Player", redActive);
         }
-        LayerManager.IgnoreLayerCollision("Green", "Red", !redActive);
-        LayerManager.IgnoreLayerCollision("Green", "Blue", redActive);
+        LayerManager.IgnoreLayerCollision("White", "Red", !redActive);
+        LayerManager.IgnoreLayerCollision("White", "Blue", redActive);
         LayerManager.IgnoreLayerCollision("GreenTrigger", "Red", !redActive);
         LayerManager.IgnoreLayerCollision("GreenTrigger", "Blue", redActive);
         Red.RefreshAllTiles();
@@ -73,7 +73,7 @@ public class RedBlueUpdater : MonoBehaviour
 
         foreach(MovingPlatform p in redBluePlatforms)
         {
-            if(p.color == ColColor.White){continue;}
+            if(p.color == PlatformColor.White || p.color == PlatformColor.Green){continue;}
             p.active = p.isRed == redActive;
         }
         foreach(Teleportable teleportable in teleportables)
@@ -95,7 +95,7 @@ public class RedBlueUpdater : MonoBehaviour
         {
             foreach(MovingPlatform p in platforms)
             {
-                if(p.color == ColColor.White){continue;}
+                if(p.color == PlatformColor.White || p.color == PlatformColor.Green){continue;}
                 if(p.isRed != value){continue;}//Skip ones that will be turned off
                 if (p.col.IsTouchingLayers(layerMask))
                 {

@@ -82,20 +82,21 @@ public class PlayerController : MonoBehaviour
     public void OnSetColor()
     {
         NoOverlapRedBlue.gameObject.SetActive(true);
-        ren.color = new Color(1, 1, 1);
+        ren.color = ColorManager.White;
+        LayerManager.IgnoreLayerCollision("Player", "White", false);
         RedBlueUpdater.Instance.setRedActive(RedBlueUpdater.redActive);
-
+        
         if(teleportable.color == ColColor.Red){
             LayerManager.IgnoreLayerCollision("Player", "Blue", true);
             LayerManager.IgnoreLayerCollision("Player", "Red", false);
             NoOverlapRedBlue.gameObject.SetActive(false);
-            ren.color = new Color(1, 0.25f, 0.25f);
+            ren.color = ColorManager.Red;
         }
         if(teleportable.color == ColColor.Blue){
             LayerManager.IgnoreLayerCollision("Player", "Red", true);
             LayerManager.IgnoreLayerCollision("Player", "Blue", false);
             NoOverlapRedBlue.gameObject.SetActive(false);
-            ren.color = new Color(0.25f, 0.25f, 1);
+            ren.color = ColorManager.Blue;
         }
     }
     void updateSpriteVisual()

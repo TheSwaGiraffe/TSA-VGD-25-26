@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Bug : MonoBehaviour
 {
+    [SerializeField] BoxCollider2D NoOverlapRedBlue;
+    [SerializeField] Teleportable teleportable;
+    [SerializeField] SpriteRenderer ren;
     [SerializeField] float velocity;
     [SerializeField] Collider2D Hitbox;
     [SerializeField] BoxCollider2D ForwardsHitbox;
@@ -26,6 +29,20 @@ public class Bug : MonoBehaviour
             PlayerController player = FindAnyObjectByType<PlayerController>();
             player.rb.linearVelocityY = player.JumpPower*1.5f;
             player.rb.linearVelocityX *= 1.5f;
+        }
+    }
+    public void OnSetColor()
+    {
+        teleportable.DefaultOnSetColor();
+        NoOverlapRedBlue.gameObject.SetActive(teleportable.color == ColColor.White);
+        if(teleportable.color == ColColor.Red){
+            ren.color = ColorManager.Red;
+        }
+        if(teleportable.color == ColColor.White){
+            ren.color = ColorManager.White;
+        }
+        if(teleportable.color == ColColor.Blue){
+            ren.color = ColorManager.Blue;
         }
     }
 }

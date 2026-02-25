@@ -85,7 +85,7 @@ TRAINING STARTED.
     }
     public IEnumerator cutscene2()//show results for world 1 & load world 2
     {
-        int completionTime = Mathf.RoundToInt(timeStarted - Time.time);
+        int completionTime = Mathf.RoundToInt(Time.time - timeStarted);
         int seconds = completionTime % 60;
         int minutes = completionTime / 60;
         textBox.text += @$"TRAINING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
@@ -142,7 +142,7 @@ TRAINING STARTED.
     }
     public IEnumerator cutscene3()//show results for world 2 & load world 3
     {
-        int completionTime = Mathf.RoundToInt(timeStarted - Time.time);
+        int completionTime = Mathf.RoundToInt(Time.time - timeStarted);
         int seconds = completionTime % 60;
         int minutes = completionTime / 60;
         textBox.text += @$"TRAINING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
@@ -198,7 +198,7 @@ TRAINING STARTED.
     }
     public IEnumerator cutscene4()//show results for world 3 & load world 4
     {
-        int completionTime = Mathf.RoundToInt(timeStarted - Time.time);
+        int completionTime = Mathf.RoundToInt(Time.time - timeStarted);
         int seconds = completionTime % 60;
         int minutes = completionTime / 60;
         textBox.text += @$"TRAINING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
@@ -248,11 +248,13 @@ TRAINING STARTED.
         textBox.text += @"
 HACKING STARTED.
 ";
+        yield return FadeOut();
+        Time.timeScale = 1;
         timeStarted = Time.time;
     }
     public IEnumerator cutscene5()//show results for world 4
     {
-        int completionTime = Mathf.RoundToInt(timeStarted - Time.time);
+        int completionTime = Mathf.RoundToInt(Time.time - timeStarted);
         int seconds = completionTime % 60;
         int minutes = completionTime / 60;
         textBox.text += @$"HACKING COMPLETED IN {minutes}:{seconds.ToString("D2")}.

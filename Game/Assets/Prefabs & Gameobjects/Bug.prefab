@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7614124437307971610}
   - component: {fileID: 7280753664861421076}
   - component: {fileID: 8914716070750504963}
+  - component: {fileID: 8125653559381064736}
   m_Layer: 3
   m_Name: Bug
   m_TagString: Untagged
@@ -186,6 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87c000316221654a8889477b8a364a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  NoOverlapRedBlue: {fileID: 5075702374483328210}
+  teleportable: {fileID: 8125653559381064736}
+  ren: {fileID: 5444185438221963819}
   velocity: -3
   Hitbox: {fileID: 1874368736842611669}
   ForwardsHitbox: {fileID: 8914716070750504963}
@@ -266,6 +270,38 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.125, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &8125653559381064736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871705313181761466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a4b6bfa88e2634f8b6d1169b590818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Teleportable
+  _color: 2
+  OverrideOnSetColor:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7614124437307971610}
+        m_TargetAssemblyTypeName: Bug, Assembly-CSharp
+        m_MethodName: OnSetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSetRedActive:
+    m_PersistentCalls:
+      m_Calls: []
+  col: {fileID: 0}
 --- !u!1 &3191818221022354521
 GameObject:
   m_ObjectHideFlags: 0

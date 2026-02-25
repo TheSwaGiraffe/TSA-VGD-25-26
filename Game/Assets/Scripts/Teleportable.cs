@@ -36,6 +36,7 @@ public class Teleportable : MonoBehaviour
     }
     public void DefaultOnSetColor()
     {
+        Debug.Log(color.ToString());
         gameObject.layer = LayerManager.GetLayerIndex(color.ToString());
         OnSetRedActive.Invoke();
     }

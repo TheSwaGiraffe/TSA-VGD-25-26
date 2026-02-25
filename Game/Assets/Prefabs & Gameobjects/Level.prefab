@@ -641,7 +641,7 @@ MonoBehaviour:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Green
+  - White
   - Water
   - UI
   - Player

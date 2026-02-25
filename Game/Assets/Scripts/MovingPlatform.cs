@@ -9,7 +9,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] Transform Corner2;
     [SerializeField] Vector2 StartVelocity;
     [SerializeField] Vector2Int Size;
-    public ColColor color;
+    public PlatformColor color;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] bool update = false;
     [SerializeField] Transform[] Pieces;
@@ -24,11 +24,11 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] BoxCollider2D noOverlapRedBlue;
     bool wasTouchingPlayer = false;
     public bool active { get=>_active; set => setActive(value);}
-    public bool isRed {get=> color == ColColor.Red;}
+    public bool isRed {get=> color == PlatformColor.Red;}
     bool _active = true;
     void Start()
     {
-        if(color != ColColor.White){
+        if(color == PlatformColor.Red || color == PlatformColor.Blue){
             Destroy(noOverlapRedBlue.gameObject);
             gameObject.layer = LayerManager.GetLayerIndex(isRed? "Red" : "Blue");
             fwdHitbox.gameObject.layer = LayerManager.GetLayerIndex(isRed? "IgnoreBlue" : "IgnoreRed");
@@ -37,7 +37,7 @@ public class MovingPlatform : MonoBehaviour
             dwnHitbox.gameObject.layer = LayerManager.GetLayerIndex(isRed? "IgnoreBlue" : "IgnoreRed");
             RedBlueUpdater.Instance.redBluePlatforms.Add(this);
         }
-        else
+        else if(color == PlatformColor.Green)
         {
             gameObject.layer = LayerManager.GetLayerIndex("Default");
             fwdHitbox.gameObject.layer = LayerManager.GetLayerIndex("Default");
@@ -45,11 +45,19 @@ public class MovingPlatform : MonoBehaviour
             upwHitbox.gameObject.layer = LayerManager.GetLayerIndex("Default");
             dwnHitbox.gameObject.layer = LayerManager.GetLayerIndex("Default");
         }
+        else if(color == PlatformColor.White)
+        {
+            gameObject.layer = LayerManager.GetLayerIndex("White");
+            fwdHitbox.gameObject.layer = LayerManager.GetLayerIndex("White");
+            bwdHitbox.gameObject.layer = LayerManager.GetLayerIndex("White");
+            upwHitbox.gameObject.layer = LayerManager.GetLayerIndex("White");
+            dwnHitbox.gameObject.layer = LayerManager.GetLayerIndex("White");
+        }
         rb.linearVelocity = StartVelocity;
     }
     void setActive(bool value)
     {
-        if(color == ColColor.White){return;}
+        if(color == PlatformColor.White || color == PlatformColor.Green){return;}
         _active = value;
         Sprite[] newSprites = active? On : Off;
         for(int i = 0; i < Pieces.Length; i++)
@@ -96,7 +104,8 @@ public class MovingPlatform : MonoBehaviour
         foreach(SpriteRenderer r in PieceSpriteRenderers)
         {
             r.color = isRed? ColorManager.Red : ColorManager.Blue;
-            if(color == ColColor.White){r.color = ColorManager.Green;}
+            if(color == PlatformColor.White){r.color = ColorManager.White;}
+            if(color == PlatformColor.Green){r.color = ColorManager.Green;}
         }
         void UpdPos(Transform t, float x, float y)
         {
@@ -209,4 +218,11 @@ public class MovingPlatform : MonoBehaviour
         }
     }
     #endif
+}
+public enum PlatformColor
+{
+    Red,
+    Blue,
+    Green,
+    White
 }
