@@ -277,13 +277,13 @@ HACKING STARTED.
             {
                 yield return new WaitForSecondsRealtime(TypeEnterInterval + (Random.value*2-1)*TypeRandomOffset);
                 textBox.text += c;
-                TypingSoundsPlayer.Enter();
+                SoundPlayer.TypingSoundsPlayer.Enter();
                 continue;
             }
             yield return new WaitForSecondsRealtime(TypeCharacterInterval + (Random.value*2-1)*TypeRandomOffset);
             textBox.text += c;
-            if(c == ' '){TypingSoundsPlayer.Space();}
-            else{TypingSoundsPlayer.Character();}
+            if(c == ' '){SoundPlayer.TypingSoundsPlayer.Space();}
+            else{SoundPlayer.TypingSoundsPlayer.Character();}
         }
         typing = false;
         Debug.Log($"Finished Typing {text}");

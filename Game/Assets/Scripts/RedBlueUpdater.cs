@@ -42,6 +42,10 @@ public class RedBlueUpdater : MonoBehaviour
     }
     public void setRedActive(bool value)
     {
+        if(_redActive != value)
+        {
+            SoundPlayer.SFXPlayer.PlaySound(4);
+        }
         _redActive = value;
         Tile[] _onTiles = redActive ? redTiles : blueTiles;
         Tile[] _offTiles = redActive ? blueTiles : redTiles;

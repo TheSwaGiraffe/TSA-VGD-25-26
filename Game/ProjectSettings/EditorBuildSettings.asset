@@ -85,6 +85,9 @@ EditorBuildSettings:
     guid: e8450b02dd2be3245bdce7de90d1b182
   - enabled: 1
     path: Assets/Scenes/World 4/4-2.unity
+    guid: 9fcc34b6e8fd1a74b9578321328ef191
+  - enabled: 1
+    path: Assets/Scenes/World 4/4-3.unity
     guid: f0dc4ee7abc990c4f9d72abbfe1d8656
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

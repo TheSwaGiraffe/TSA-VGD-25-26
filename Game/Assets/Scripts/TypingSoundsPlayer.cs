@@ -1,24 +1,18 @@
-using System.Collections;
 using UnityEngine;
 
 public class TypingSoundsPlayer : MonoBehaviour
 {
-    public static TypingSoundsPlayer Instance;
-    void Start()
-    {
-        Instance = this;
-    }
     [SerializeField] AudioSource[] sounds;
-    public static void Character()
+    public void Character()
     {
-        Instance.sounds[Random.Range(0, 5)].Play();
+        sounds[Random.Range(0, 5)].Play();
     }
-    public static void Enter()
+    public void Enter()
     {
-        Instance.sounds[Random.Range(5, 10)].Play();
+        sounds[Random.Range(5, 10)].Play();
     }
-    public static void Space()
+    public void Space()
     {
-        Instance.sounds[Random.Range(10, 15)].Play();
+        sounds[Random.Range(10, 15)].Play();
     }
 }

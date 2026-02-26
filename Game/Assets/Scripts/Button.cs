@@ -19,6 +19,7 @@ public class Button : MonoBehaviour
         if(newIsPressed && !isPressed)//On Pressed
         {
             OnPressed.Invoke();
+            SoundPlayer.SFXPlayer.PlaySound(7);
             Renderer.sprite = PressedSprite;
         }
         if(newIsPressed)//While Pressed
@@ -28,6 +29,7 @@ public class Button : MonoBehaviour
         if(!newIsPressed && isPressed)//On Released
         {
             OnReleased.Invoke();
+            SoundPlayer.SFXPlayer.PlaySound(7);
             Renderer.sprite = UnpressedSprite;
         }
         isPressed = newIsPressed;

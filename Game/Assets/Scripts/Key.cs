@@ -13,6 +13,7 @@ public class Key : MonoBehaviour
                 return;
             }
             player.Key.SetActive(true);
+            SoundPlayer.SFXPlayer.PlaySound(2);
             Destroy(gameObject);
         }
     }

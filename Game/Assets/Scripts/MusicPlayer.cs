@@ -3,15 +3,8 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    static MusicPlayer Instance;
     [SerializeField] AudioSource[] Songs;
     AudioSource current;
-    void Awake()
-    {
-        if(Instance){Destroy(Instance.transform.parent.gameObject);}
-        Instance = this;
-        DontDestroyOnLoad(transform.parent.gameObject);
-    }
     public void StartPlayingSongs()
     {
         Songs[0].Stop();
@@ -29,7 +22,7 @@ public class MusicPlayer : MonoBehaviour
             float songLength = current.clip.length;
             current.Play();
             yield return new WaitForSeconds(songLength);
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(2);
         }
     }
     void OnDestroy()

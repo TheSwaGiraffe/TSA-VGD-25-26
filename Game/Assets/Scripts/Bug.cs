@@ -29,6 +29,7 @@ public class Bug : MonoBehaviour
             PlayerController player = FindAnyObjectByType<PlayerController>();
             player.rb.linearVelocityY = player.JumpPower*1.5f;
             player.rb.linearVelocityX *= 1.5f;
+            SoundPlayer.SFXPlayer.PlaySound(6);
         }
     }
     public void OnSetColor()

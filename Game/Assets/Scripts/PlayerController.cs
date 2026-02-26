@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         if(groundedHitbox.IsTouchingLayers(LayerManager.GroundLayer)){isJumping = false;}
         if (jumping && groundedHitbox.IsTouchingLayers(LayerManager.GroundLayer))
         {
+            SoundPlayer.SFXPlayer.PlaySound(1);
             rb.linearVelocityY = JumpPower + velocityOffset.y;
             isJumping = true;
         }
@@ -151,6 +152,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SoundPlayer.SFXPlayer.PlaySound(0);
     }
 #if UNITY_EDITOR
     void OnValidate()

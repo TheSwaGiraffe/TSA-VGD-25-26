@@ -28,6 +28,7 @@ public class Door : MonoBehaviour
                 if (player.Key.activeSelf)
                 {
                     Open = true;
+                    SoundPlayer.SFXPlayer.PlaySound(3);
                     cooldown = 2.5f;
                     player.Key.SetActive(false);
                     return;
