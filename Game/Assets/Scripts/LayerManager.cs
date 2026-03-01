@@ -14,12 +14,12 @@ public class LayerManager : MonoBehaviour
     [Tooltip("Layer that the player can jump off of")]
     public LayerMask _GroundLayer;
     [Tooltip("Layer that resets the player when touched")]
-    public LayerMask _DeathLayer;
+    public LayerMask _DeathLayers;
     [Tooltip("Things that moving platforms consider walls")]
     public Collider2D[] Walls;
     public static LayerMask PlayerLayer{get=> Instance._PlayerLayer;}
     public static LayerMask GroundLayer{get=> Instance._GroundLayer;}
-    public static LayerMask DeathLayer{get=> Instance._DeathLayer;}
+    public static LayerMask DeathLayers{get=> Instance._DeathLayers;}
     public static int GetLayerIndex(string layerName)
     {
         int i = Array.IndexOf(Instance.Layers, layerName);

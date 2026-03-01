@@ -21,8 +21,9 @@ public class MusicPlayer : MonoBehaviour
             current = next;
             float songLength = current.clip.length;
             current.Play();
-            yield return new WaitForSeconds(songLength);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSecondsRealtime(songLength);
+            Debug.Log($"{current.name} played after {songLength}");
+            yield return new WaitForSecondsRealtime(2);
         }
     }
     void OnDestroy()

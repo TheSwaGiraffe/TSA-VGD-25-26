@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class Portal : MonoBehaviour
     List<Collider2D> Up = new List<Collider2D>();
     List<Collider2D> Down = new List<Collider2D>();
     [SerializeField] SpriteRenderer ren;
-    bool entered = false;
+    float cooldown = 0;
 
     void Awake()
     {
@@ -23,21 +24,31 @@ public class Portal : MonoBehaviour
     }
     void Update()
     {
-        if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && !entered)
+        if(!Open || cooldown > 0)
         {
-            if (!_open)
+            ren.color = Color.white;
+        }
+        else
+        {
+            ren.color = color == ColColor.Red ? ColorManager.Red : ColorManager.Blue;
+            if(color == ColColor.White){ ren.color = ColorManager.White;}
+        }
+        cooldown -= Time.deltaTime;
+        if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && cooldown <= 0 && !_open)
+        {
+            PlayerController player = FindAnyObjectByType<PlayerController>();
+            if (player.Key.activeSelf)
             {
-                PlayerController player = FindAnyObjectByType<PlayerController>();
-                if (player.Key.activeSelf)
-                {
-                    Open = true;
-                }
-                else
-                {
-                    return;
-                }
+                Open = true;
+                TeleportTo.Open = true;
+                SoundPlayer.SFXPlayer.PlaySound(3);
+                cooldown = 2.5f;
+                player.Key.SetActive(false);
             }
-
+            else
+            {
+                return;
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -59,7 +70,7 @@ public class Portal : MonoBehaviour
         {
             if(other.transform.position.x < transform.position.x)
             {
-                Teleport(other.GetComponent<Teleportable>());
+                StartCoroutine(Teleport(other.GetComponent<Teleportable>(), Direction.Left));
                 return;
             }
         }
@@ -67,7 +78,7 @@ public class Portal : MonoBehaviour
         {
             if(other.transform.position.x > transform.position.x)
             {
-                Teleport(other.GetComponent<Teleportable>());
+                StartCoroutine(Teleport(other.GetComponent<Teleportable>(), Direction.Right));
                 return;
             }
         }
@@ -75,7 +86,7 @@ public class Portal : MonoBehaviour
         {
             if(other.transform.position.y < transform.position.y)
             {
-                Teleport(other.GetComponent<Teleportable>());
+                StartCoroutine(Teleport(other.GetComponent<Teleportable>(), Direction.Down));
                 return;
             }
         }
@@ -83,7 +94,7 @@ public class Portal : MonoBehaviour
         {
             if(other.transform.position.y > transform.position.y)
             {
-                Teleport(other.GetComponent<Teleportable>());
+                StartCoroutine(Teleport(other.GetComponent<Teleportable>(), Direction.Up));
                 return;
             }
         }
@@ -95,11 +106,41 @@ public class Portal : MonoBehaviour
         if(Up.Contains(other)){Up.Remove(other);}
         if(Down.Contains(other)){Down.Remove(other);}
     }
-    void Teleport(Teleportable teleportable)
+    IEnumerator Teleport(Teleportable teleportable, Direction dir)
     {
-        Vector3 teleportVector = new Vector3(TeleportTo.transform.position.x - transform.position.x, TeleportTo.transform.position.y - transform.position.y, 0);
-        teleportable.transform.position += teleportVector;
+        if(!Open || cooldown > 0){yield break;}
+        Vector2 teleportVector = new Vector2(TeleportTo.transform.position.x - transform.position.x, TeleportTo.transform.position.y - transform.position.y);
+        teleportable.rb.position += teleportVector;
         teleportable.color = TeleportTo.color;
+        foreach (Collider2D col in Teleportable.cols)
+        {
+            if(teleportable.col == col){continue;}
+            ColliderDistance2D dist = teleportable.col.Distance(col);
+            while (dist.isOverlapped)
+            {
+                Vector2 moveDir = new Vector2();
+                switch (dir)
+                {
+                    case Direction.Up:
+                        moveDir = Vector2.up;
+                        break;
+                    case Direction.Down:
+                        moveDir = Vector2.down;
+                        break;
+                    case Direction.Left:
+                        moveDir = Vector2.left;
+                        break;
+                    case Direction.Right:
+                        moveDir = Vector2.right;
+                        break;
+                }
+                Debug.Log($"{teleportable.gameObject.name} was teleported into {col.gameObject.name}");
+                col.transform.GetComponent<Rigidbody2D>().position -= moveDir * dist.distance;
+                Debug.Log(123456);
+                dist = teleportable.col.Distance(col);
+                yield return new WaitForFixedUpdate();
+            }
+        }
     }
 #if UNITY_EDITOR
     void OnValidate()
@@ -112,4 +153,11 @@ public class Portal : MonoBehaviour
         if(color == ColColor.White){ ren.color = ColorManager.White;}
     }
 #endif
+}
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right
 }

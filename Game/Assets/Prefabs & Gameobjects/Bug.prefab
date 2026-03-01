@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   NoOverlapRedBlue: {fileID: 5075702374483328210}
+  DeathHitboxes: {fileID: 3191818221022354521}
   teleportable: {fileID: 8125653559381064736}
   ren: {fileID: 5444185438221963819}
   velocity: -3
@@ -301,7 +302,8 @@ MonoBehaviour:
   OnSetRedActive:
     m_PersistentCalls:
       m_Calls: []
-  col: {fileID: 0}
+  col: {fileID: 1874368736842611669}
+  rb: {fileID: 7280753664861421076}
 --- !u!1 &3191818221022354521
 GameObject:
   m_ObjectHideFlags: 0

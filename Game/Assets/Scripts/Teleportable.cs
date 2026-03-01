@@ -9,6 +9,7 @@ public class Teleportable : MonoBehaviour
     public UnityEvent OverrideOnSetColor;
     public UnityEvent OnSetRedActive;
     public Collider2D col;
+    public Rigidbody2D rb;
     public static List<Collider2D> cols = new List<Collider2D>();
     bool started = false;
     void Start()
@@ -36,9 +37,12 @@ public class Teleportable : MonoBehaviour
     }
     public void DefaultOnSetColor()
     {
-        Debug.Log(color.ToString());
         gameObject.layer = LayerManager.GetLayerIndex(color.ToString());
         OnSetRedActive.Invoke();
+    }
+    void OnDestroy()
+    {
+        cols.Remove(col);
     }
 #if UNITY_EDITOR
     ColColor previousColor;

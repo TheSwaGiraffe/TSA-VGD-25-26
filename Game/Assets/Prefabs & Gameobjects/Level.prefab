@@ -651,16 +651,19 @@ MonoBehaviour:
   - NoOverlapRedBlue
   - IgnoreRed
   - IgnoreBlue
-  - GreenTrigger
+  - WhiteTrigger
+  - DefaultTrigger
+  - RedDeath
+  - BlueDeath
   _PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
   _GroundLayer:
     serializedVersion: 2
     m_Bits: 777
-  _DeathLayer:
+  _DeathLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 98432
   Walls:
   - {fileID: 6312055546450653294}
   - {fileID: 6382467800184475645}

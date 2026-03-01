@@ -214,7 +214,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnSetRedActive:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8143510081337671614}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnSetRedActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   col: {fileID: 8884477079548234312}
+  rb: {fileID: 2640242090143709984}
 --- !u!1 &4725849685577882755
 GameObject:
   m_ObjectHideFlags: 0

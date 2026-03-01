@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class Door : MonoBehaviour
     [SerializeField] int sceneIndex; //Buildindex of the scene that loads when entering the door
     [SerializeField] Terminal.Cutscene cutscene = Terminal.Cutscene.Select; //Alternatively play a cutscene upon entering
     [SerializeField] BoxCollider2D doorCollider;
+    [SerializeField] SpriteRenderer ren;
     bool entered = false;
     float cooldown = 0;
 
@@ -20,6 +22,14 @@ public class Door : MonoBehaviour
     void Update()
     {
         cooldown -= Time.deltaTime;
+        if(!Open || cooldown > 0)
+        {
+            ren.color = Color.white;
+        }
+        else
+        {
+            ren.color = ColorManager.Yellow;
+        }
         if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && !entered && cooldown <= 0)
         {
             if (!_open)

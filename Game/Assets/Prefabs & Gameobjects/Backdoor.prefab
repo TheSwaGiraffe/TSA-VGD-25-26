@@ -110,6 +110,7 @@ MonoBehaviour:
   sceneIndex: 0
   cutscene: 0
   doorCollider: {fileID: 7687849696842806866}
+  ren: {fileID: 1950383980006858629}
 --- !u!95 &6386821612376979212
 Animator:
   serializedVersion: 7

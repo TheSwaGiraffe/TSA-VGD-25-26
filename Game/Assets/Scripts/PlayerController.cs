@@ -75,13 +75,14 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsMoving", xInput != 0 || jumping); //update animator
         animator.SetBool("IsJumping", isJumping);
 
-        if (playerHitbox.IsTouchingLayers(LayerManager.DeathLayer))
+        if (playerHitbox.IsTouchingLayers(LayerManager.DeathLayers))
         {
             Die();
         }
     }
     public void OnSetColor()
     {
+        animator.SetBool("IsActive", true);
         NoOverlapRedBlue.gameObject.SetActive(true);
         ren.color = ColorManager.White;
         LayerManager.IgnoreLayerCollision("Player", "White", false);
@@ -90,15 +91,25 @@ public class PlayerController : MonoBehaviour
         if(teleportable.color == ColColor.Red){
             LayerManager.IgnoreLayerCollision("Player", "Blue", true);
             LayerManager.IgnoreLayerCollision("Player", "Red", false);
+            LayerManager.IgnoreLayerCollision("Player", "BlueDeath", true);
+            LayerManager.IgnoreLayerCollision("Player", "RedDeath", false);
             NoOverlapRedBlue.gameObject.SetActive(false);
             ren.color = ColorManager.Red;
         }
         if(teleportable.color == ColColor.Blue){
             LayerManager.IgnoreLayerCollision("Player", "Red", true);
             LayerManager.IgnoreLayerCollision("Player", "Blue", false);
+            LayerManager.IgnoreLayerCollision("Player", "RedDeath", true);
+            LayerManager.IgnoreLayerCollision("Player", "BlueDeath", false);
             NoOverlapRedBlue.gameObject.SetActive(false);
             ren.color = ColorManager.Blue;
         }
+    }
+    public void OnSetRedActive()
+    {
+        if(teleportable.color == ColColor.White){return;}
+        if(teleportable.color == ColColor.Red){animator.SetBool("IsActive", RedBlueUpdater.redActive);}
+        if(teleportable.color == ColColor.Blue){animator.SetBool("IsActive", !RedBlueUpdater.redActive);}
     }
     void updateSpriteVisual()
     {
@@ -145,7 +156,7 @@ public class PlayerController : MonoBehaviour
         float pixelsWorld = cam.orthographicSize * 8;
         screenHeight = cam.scaledPixelHeight;
         float targetPixelsWorld = 1 / (Mathf.Floor(screenHeight / pixelsWorld) / screenHeight);
-        float targetSize = targetPixelsWorld / 8f; //8.01 instead of 8.0 so no floating point errors when rendering
+        float targetSize = targetPixelsWorld / 8.01f; //8.01 instead of 8.0 so no floating point errors when rendering
         cam.orthographicSize = targetSize;
         calculateCamBounds();
     }

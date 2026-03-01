@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bug : MonoBehaviour
 {
     [SerializeField] BoxCollider2D NoOverlapRedBlue;
+    [SerializeField] GameObject DeathHitboxes;
     [SerializeField] Teleportable teleportable;
     [SerializeField] SpriteRenderer ren;
     [SerializeField] float velocity;
@@ -38,12 +39,15 @@ public class Bug : MonoBehaviour
         NoOverlapRedBlue.gameObject.SetActive(teleportable.color == ColColor.White);
         if(teleportable.color == ColColor.Red){
             ren.color = ColorManager.Red;
+            DeathHitboxes.layer = LayerManager.GetLayerIndex("RedDeath");
         }
         if(teleportable.color == ColColor.White){
             ren.color = ColorManager.White;
+            DeathHitboxes.layer = LayerManager.GetLayerIndex("Death");
         }
         if(teleportable.color == ColColor.Blue){
             ren.color = ColorManager.Blue;
+            DeathHitboxes.layer = LayerManager.GetLayerIndex("BlueDeath");
         }
     }
 }

@@ -212,6 +212,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   col: {fileID: 5037075401869057679}
+  rb: {fileID: 1997620390661317446}
 --- !u!114 &7654997629466556643
 MonoBehaviour:
   m_ObjectHideFlags: 0
