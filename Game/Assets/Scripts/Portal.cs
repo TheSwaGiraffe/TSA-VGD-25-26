@@ -24,15 +24,7 @@ public class Portal : MonoBehaviour
     }
     void Update()
     {
-        if(!Open || cooldown > 0)
-        {
-            ren.color = Color.white;
-        }
-        else
-        {
-            ren.color = color == ColColor.Red ? ColorManager.Red : ColorManager.Blue;
-            if(color == ColColor.White){ ren.color = ColorManager.White;}
-        }
+        Debug.Log("wasd");
         cooldown -= Time.deltaTime;
         if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && cooldown <= 0 && !_open)
         {

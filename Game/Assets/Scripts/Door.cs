@@ -22,14 +22,6 @@ public class Door : MonoBehaviour
     void Update()
     {
         cooldown -= Time.deltaTime;
-        if(!Open || cooldown > 0)
-        {
-            ren.color = Color.white;
-        }
-        else
-        {
-            ren.color = ColorManager.Yellow;
-        }
         if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && !entered && cooldown <= 0)
         {
             if (!_open)

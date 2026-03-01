@@ -14,7 +14,7 @@ public class Key : MonoBehaviour
             }
             player.Key.SetActive(true);
             SoundPlayer.SFXPlayer.PlaySound(2);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
