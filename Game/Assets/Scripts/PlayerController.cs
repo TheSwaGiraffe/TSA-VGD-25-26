@@ -86,6 +86,8 @@ public class PlayerController : MonoBehaviour
         NoOverlapRedBlue.gameObject.SetActive(true);
         ren.color = ColorManager.White;
         LayerManager.IgnoreLayerCollision("Player", "White", false);
+        LayerManager.IgnoreLayerCollision("Player", "WhiteTrigger", false);
+        LayerManager.IgnoreLayerCollision("Player", "WhiteDeath", false);
         RedBlueUpdater.Instance.setRedActive(RedBlueUpdater.redActive);
         
         if(teleportable.color == ColColor.Red){

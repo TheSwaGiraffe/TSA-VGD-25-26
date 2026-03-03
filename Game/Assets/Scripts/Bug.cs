@@ -13,6 +13,7 @@ public class Bug : MonoBehaviour
     [Tooltip("Bug will 'bounce' off specified layers")]
     [SerializeField] LayerMask ReturnLayers;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] Animator animator;
     void Awake()
     {
         Physics2D.IgnoreCollision(Hitbox, ForwardsHitbox);
@@ -43,11 +44,17 @@ public class Bug : MonoBehaviour
         }
         if(teleportable.color == ColColor.White){
             ren.color = ColorManager.White;
-            DeathHitboxes.layer = LayerManager.GetLayerIndex("Death");
+            DeathHitboxes.layer = LayerManager.GetLayerIndex("WhiteDeath");
         }
         if(teleportable.color == ColColor.Blue){
             ren.color = ColorManager.Blue;
             DeathHitboxes.layer = LayerManager.GetLayerIndex("BlueDeath");
         }
+    }
+    public void OnSetRedActive()
+    {
+        if(teleportable.color == ColColor.White){return;}
+        if(teleportable.color == ColColor.Red){animator.SetBool("IsActive", RedBlueUpdater.redActive);}
+        if(teleportable.color == ColColor.Blue){animator.SetBool("IsActive", !RedBlueUpdater.redActive);}
     }
 }

@@ -109,7 +109,7 @@ public class MovingPlatform : MonoBehaviour
         }
         void UpdPos(Transform t, float x, float y)
         {
-            t.localPosition = new Vector3(x, y, t.position.z);
+            t.localPosition = new Vector3(x, y, t.localPosition.z);
         }
     }
     public void MovePlatform(Vector2 amt)

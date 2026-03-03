@@ -655,6 +655,7 @@ MonoBehaviour:
   - DefaultTrigger
   - RedDeath
   - BlueDeath
+  - WhiteDeath
   _PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -663,7 +664,7 @@ MonoBehaviour:
     m_Bits: 777
   _DeathLayers:
     serializedVersion: 2
-    m_Bits: 98432
+    m_Bits: 229504
   Walls:
   - {fileID: 6312055546450653294}
   - {fileID: 6382467800184475645}
