@@ -24,7 +24,6 @@ public class Portal : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log("wasd");
         cooldown -= Time.deltaTime;
         if (doorCollider.IsTouchingLayers(LayerManager.PlayerLayer) && cooldown <= 0 && !_open)
         {

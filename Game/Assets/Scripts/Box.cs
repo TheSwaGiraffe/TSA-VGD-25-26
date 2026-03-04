@@ -24,7 +24,7 @@ public class Box : MonoBehaviour
     }
     public void OnSetRedActive()
     {
-        if(teleportable.color == ColColor.White){return;}
+        if(teleportable.color == ColColor.White){ren.sprite = on;}
         if(teleportable.color == ColColor.Red){ren.sprite = RedBlueUpdater.redActive ? on : off;}
         if(teleportable.color == ColColor.Blue){ren.sprite = RedBlueUpdater.redActive ? off : on;}
     }

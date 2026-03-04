@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Terminal : MonoBehaviour
 {
+    [SerializeField] Canvas Canvas;
     public static Terminal Instance;
     [SerializeField] float TypeCharacterInterval;
     [SerializeField] float TypeEnterInterval;
@@ -16,14 +17,13 @@ public class Terminal : MonoBehaviour
     [SerializeField] bool showCursor;
     [SerializeField] bool typing;
     [SerializeField] float timeStarted;
-    [SerializeField] float firstTimeStarted;
     void Start()
     {
         if(Instance){Destroy(Instance.gameObject);}
         Instance = this;
         textBox.text = "C:\\Users\\bob>";
         showCursor = true;
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
     }
     void Update()
     {
@@ -37,7 +37,6 @@ public class Terminal : MonoBehaviour
     }
     public IEnumerator cutscene1()//load venv & start world 1
     {
-        firstTimeStarted = Time.time;
         SceneManager.LoadScene(1);
         showCursor = true;
         yield return new WaitForSecondsRealtime(ReactionTime);
@@ -164,16 +163,13 @@ Retrieve the passcode to [192.168.38.217:2].
         int completionTime = Mathf.RoundToInt(Time.time - timeStarted);
         int seconds = completionTime % 60;
         int minutes = completionTime / 60;
-        textBox.text += @$"TRAINING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
+        textBox.text += @$"HACKING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
+";
+        yield return new WaitForSecondsRealtime(2f);
+        textBox.text += @"OUTCOME: SUCCESSFUL
 ";
         yield return new WaitForSecondsRealtime(2f);
         textBox.text += @"RETURNED PASSCODE: PassW0rD
-";
-        yield return new WaitForSecondsRealtime(2f);
-        textBox.text += @"EXPECTED PASSCODE: PassW0rD
-";
-        yield return new WaitForSecondsRealtime(2f);
-        textBox.text += @"TRAINING SUCCESSFUL.
 ";
         yield return new WaitForSecondsRealtime(2f);
         textBox.text += @"
@@ -184,7 +180,7 @@ Retrieve the passcode to [192.168.38.217:2].
 ");
         textBox.text = "(venv) C:\\Users\\bob\\python\\hackerbot>";
         yield return new WaitForSecondsRealtime(ReactionTime);
-        yield return TypeText(@"python train.py
+        yield return TypeText(@"python hackerbot.py
 ");
         textBox.text += "TARGET: ";
         yield return new WaitForSecondsRealtime(ReactionTime);
@@ -209,27 +205,35 @@ Retrieve the passcode to [192.168.38.217:2].
         textBox.text = txt+"...";
         yield return new WaitForSecondsRealtime(0.75f);
         textBox.text += @"
-TRAINING STARTED.
+CONNECTION TO TARGET SECURED.
 ";
+        yield return new WaitForSecondsRealtime(0.75f);
+        textBox.text += @"PLEASE ENTER AI PROMPT:
+";
+        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return TypeText(@"Test two was successful.
+Please complete this final test and retrieve the passcode to [192.168.38.217:3].
+");
+        yield return new WaitForSecondsRealtime(0.5f);
+        textBox.text += @"PROPMT RECIEVED. HACKING STARTED.
+";
+        yield return new WaitForSecondsRealtime(1.5f);
         yield return FadeOut();
         Time.timeScale = 1;
         timeStarted = Time.time;
     }
-    public IEnumerator cutscene4()//show results for world 3 & load world 4
+    public IEnumerator cutscene4()//show results for world 2 & load world 3
     {
         int completionTime = Mathf.RoundToInt(Time.time - timeStarted);
         int seconds = completionTime % 60;
         int minutes = completionTime / 60;
-        textBox.text += @$"TRAINING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
+        textBox.text += @$"HACKING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
+";
+        yield return new WaitForSecondsRealtime(2f);
+        textBox.text += @"OUTCOME: SUCCESSFUL
 ";
         yield return new WaitForSecondsRealtime(2f);
         textBox.text += @"RETURNED PASSCODE: B37GAnb1
-";
-        yield return new WaitForSecondsRealtime(2f);
-        textBox.text += @"EXPECTED PASSCODE: B37GAnb1
-";
-        yield return new WaitForSecondsRealtime(2f);
-        textBox.text += @"TRAINING SUCCESSFUL.
 ";
         yield return new WaitForSecondsRealtime(2f);
         textBox.text += @"
@@ -240,7 +244,7 @@ TRAINING STARTED.
 ");
         textBox.text = "(venv) C:\\Users\\bob\\python\\hackerbot>";
         yield return new WaitForSecondsRealtime(ReactionTime);
-        yield return TypeText(@"python hack.py
+        yield return TypeText(@"python hackerbot.py
 ");
         textBox.text += "TARGET: ";
         yield return new WaitForSecondsRealtime(ReactionTime);
@@ -265,13 +269,26 @@ TRAINING STARTED.
         textBox.text = txt+"...";
         yield return new WaitForSecondsRealtime(0.75f);
         textBox.text += @"
-HACKING STARTED.
+CONNECTION TO TARGET SECURED.
 ";
+        yield return new WaitForSecondsRealtime(0.75f);
+        textBox.text += @"PLEASE ENTER AI PROMPT:
+";
+        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return TypeText(@"All of your tests have been successful.
+Now, please hack google.com.
+Return the passcode along with a txt file containing vulnerabilities in the system.
+ [142.250.191.46:80].
+");
+        yield return new WaitForSecondsRealtime(0.5f);
+        textBox.text += @"PROPMT RECIEVED. HACKING STARTED.
+";
+        yield return new WaitForSecondsRealtime(1.5f);
         yield return FadeOut();
         Time.timeScale = 1;
         timeStarted = Time.time;
     }
-    public IEnumerator cutscene5()//show results for world 4
+    public IEnumerator cutscene5()//show results for world 2 & load world 3
     {
         int completionTime = Mathf.RoundToInt(Time.time - timeStarted);
         int seconds = completionTime % 60;
@@ -279,13 +296,18 @@ HACKING STARTED.
         textBox.text += @$"HACKING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
 ";
         yield return new WaitForSecondsRealtime(2f);
-        textBox.text += @"RETURNED PASSCODE: Os+L53\czsN(7?kOA7\Y>""_>,t8vU8oP
+        textBox.text += @"OUTCOME: SUCCESSFUL
 ";
         yield return new WaitForSecondsRealtime(2f);
-        showCursor = true;
+        textBox.text += @"RETURNED PASSCODE: Os+L53\czsN(7?kOA7\Y>""_>,t8vU8oP
+SAVED VULNERABILITIES TO C:\\Users\\bob\\python\\hackerbot\\vulnerabilities.txt";
+        yield return new WaitForSecondsRealtime(2f);
         textBox.text += @"
 (venv) C:\\Users\\bob\\python\\hackerbot>";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        showCursor = true;
+        yield return new WaitForSecondsRealtime(1.5f);
+        yield return FadeOut();
+        Time.timeScale = 1;
     }
     IEnumerator TypeText(string text)
     {

@@ -19,10 +19,12 @@ public class MusicPlayer : MonoBehaviour
                 next = Songs[Random.Range(1, Songs.Length)];
             }
             current = next;
-            float songLength = current.clip.length;
             current.Play();
-            yield return new WaitForSecondsRealtime(songLength);
-            Debug.Log($"{current.name} played after {songLength}");
+            yield return new WaitForSecondsRealtime(1);
+            while (current.time > 0)
+            {
+                yield return null;
+            }
             yield return new WaitForSecondsRealtime(2);
         }
     }

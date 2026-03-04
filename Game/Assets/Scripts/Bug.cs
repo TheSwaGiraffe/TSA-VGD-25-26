@@ -53,7 +53,7 @@ public class Bug : MonoBehaviour
     }
     public void OnSetRedActive()
     {
-        if(teleportable.color == ColColor.White){return;}
+        if(teleportable.color == ColColor.White){animator.SetBool("IsActive", true);}
         if(teleportable.color == ColColor.Red){animator.SetBool("IsActive", RedBlueUpdater.redActive);}
         if(teleportable.color == ColColor.Blue){animator.SetBool("IsActive", !RedBlueUpdater.redActive);}
     }
