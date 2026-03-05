@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 6233683723494330266}
   - component: {fileID: 2212924409177912822}
   - component: {fileID: 5670289227267055271}
+  - component: {fileID: 7600892837875677904}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -430,6 +431,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &7600892837875677904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3198678062160089748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5038a33a12f01745a4987f3de51f7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraInstance
 --- !u!1 &3508413172019595460
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +682,8 @@ MonoBehaviour:
   - {fileID: 6312055546450653294}
   - {fileID: 6382467800184475645}
   - {fileID: 8623714159855423928}
+  soundPlayer: {fileID: 629855632172865045, guid: 3feeb070e0e04674c8e7d7ae531b147e, type: 3}
+  terminal: {fileID: 7752716697397978224, guid: eda5b2dc983753442a6fcfb00e6bf901, type: 3}
 --- !u!1001 &1373431001283235207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1387,15 +1402,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.b
-      value: 0.5992412
+      value: 0.40966073
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.g
-      value: 0.48209506
+      value: 0.38511068
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.r
-      value: 0.8953774
+      value: 0.8879254
       objectReference: {fileID: 0}
     - target: {fileID: 3436606494004398882, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileAssetArray.Array.data[2].m_RefCount
@@ -1587,15 +1602,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.b
-      value: 0.6390713
+      value: 0.46443668
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.g
-      value: 0.5999235
+      value: 0.40391922
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[10].m_Data.r
-      value: 0.86782795
+      value: 0.9898823
       objectReference: {fileID: 0}
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_TileColorArray.Array.data[9].m_RefCount
@@ -1684,6 +1699,18 @@ PrefabInstance:
     - target: {fileID: 4475772640978673746, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: m_Tiles.Array.data[44].second.m_TileSpriteIndex
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852277970867986607, guid: 6b694d185984767418c5661a520d5e43, type: 3}
+      propertyPath: m_TileColorArray.Array.data[10].m_Data.b
+      value: 0.6169367
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852277970867986607, guid: 6b694d185984767418c5661a520d5e43, type: 3}
+      propertyPath: m_TileColorArray.Array.data[10].m_Data.g
+      value: 0.52639407
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852277970867986607, guid: 6b694d185984767418c5661a520d5e43, type: 3}
+      propertyPath: m_TileColorArray.Array.data[10].m_Data.r
+      value: 0.8521915
       objectReference: {fileID: 0}
     - target: {fileID: 6436627786918624402, guid: 6b694d185984767418c5661a520d5e43, type: 3}
       propertyPath: Green

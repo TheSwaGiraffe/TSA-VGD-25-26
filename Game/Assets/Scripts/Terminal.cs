@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Terminal : MonoBehaviour
 {
-    [SerializeField] Canvas Canvas;
+    public Canvas Canvas;
     public static Terminal Instance;
     [SerializeField] float TypeCharacterInterval;
     [SerializeField] float TypeEnterInterval;

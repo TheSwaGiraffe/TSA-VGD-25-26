@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class LayerManager : MonoBehaviour
 {
@@ -36,6 +37,21 @@ public class LayerManager : MonoBehaviour
         int i2 = GetLayerIndex(layer2);
         Physics2D.IgnoreLayerCollision(i1, i2, ignore);
     }
+#if UNITY_EDITOR
+    [SerializeField] GameObject soundPlayer;
+    [SerializeField] GameObject terminal;
+    void Start()
+    {
+        if (SoundPlayer.Instance.IsUnityNull())
+        {
+            Instantiate(soundPlayer);
+        }
+        if (Terminal.Instance.IsUnityNull())
+        {
+            Instantiate(terminal);
+        }
+    }
+#endif
 }
 [Serializable] public enum ColColor
 {

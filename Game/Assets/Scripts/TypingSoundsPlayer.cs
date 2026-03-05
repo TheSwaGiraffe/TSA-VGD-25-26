@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TypingSoundsPlayer : MonoBehaviour
 {
-    [SerializeField] AudioSource[] sounds;
+    public AudioSource[] sounds;
     public void Character()
     {
         sounds[Random.Range(0, 5)].Play();
