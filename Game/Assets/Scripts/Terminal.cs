@@ -17,6 +17,7 @@ public class Terminal : MonoBehaviour
     [SerializeField] bool showCursor;
     [SerializeField] bool typing;
     [SerializeField] float timeStarted;
+    public bool isActive {get => canvasGroup.alpha > 0;}
     void Start()
     {
         if(Instance){Destroy(Instance.gameObject);}

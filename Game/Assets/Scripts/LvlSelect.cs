@@ -19,6 +19,7 @@ public class LvlSelect : MonoBehaviour
                 button.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() =>
                 {
                     SoundPlayer.MusicPlayer.StartPlayingSongs();
+                    Time.timeScale = 1;
                     SceneManager.LoadScene(sceneIndex);
                 });
                 template.gameObject.SetActive(false);
