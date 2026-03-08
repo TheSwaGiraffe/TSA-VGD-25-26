@@ -70,10 +70,10 @@ EditorBuildSettings:
     guid: b4def51be4a0dd5489ec508ce1749592
   - enabled: 1
     path: Assets/Scenes/World 3/3-5.unity
-    guid: ef3511a72badb0d4c99ff8e20fec35b2
+    guid: a8d81668c2799d9498be7016d0640f20
   - enabled: 1
     path: Assets/Scenes/World 3/3-6.unity
-    guid: f34e3f2e367bae041a35a54c71c17581
+    guid: ef3511a72badb0d4c99ff8e20fec35b2
   - enabled: 1
     path: Assets/Scenes/World 3/3-7.unity
     guid: 22f9b2ef8a26a59449be243db7a8ead3
@@ -82,7 +82,7 @@ EditorBuildSettings:
     guid: 076b5a6e30d7bc14bbc0fd2e17967495
   - enabled: 1
     path: Assets/Scenes/World 4/4-1.unity
-    guid: e8450b02dd2be3245bdce7de90d1b182
+    guid: aa1b6c0117c16a245831cbfcfa984b9a
   - enabled: 1
     path: Assets/Scenes/World 4/4-2.unity
     guid: 9fcc34b6e8fd1a74b9578321328ef191
@@ -100,10 +100,13 @@ EditorBuildSettings:
     guid: ec9a8509c67526d4a994afd600eb7f61
   - enabled: 1
     path: Assets/Scenes/World 4/4-7.unity
-    guid: 8b2f7982394f32544a110e328c68120c
+    guid: 3ccbab0441d90c2499862061811c70ab
   - enabled: 1
     path: Assets/Scenes/World 4/4-8.unity
-    guid: 3ccbab0441d90c2499862061811c70ab
+    guid: 419a60c2436117246948e74ea0bbf149
+  - enabled: 1
+    path: Assets/Scenes/World 5/FinalCutscene.unity
+    guid: a3861b2401262044fbc0bd11c74ea166
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

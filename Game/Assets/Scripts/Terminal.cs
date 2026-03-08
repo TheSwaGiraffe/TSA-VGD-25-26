@@ -17,6 +17,7 @@ public class Terminal : MonoBehaviour
     [SerializeField] bool showCursor;
     [SerializeField] bool typing;
     [SerializeField] float timeStarted;
+    public float speed = 1;
     public bool isActive {get => canvasGroup.alpha > 0;}
     void Start()
     {
@@ -29,6 +30,16 @@ public class Terminal : MonoBehaviour
     void Update()
     {
         textBox.text = textBox.text.Replace("_", "");
+        if(canvasGroup.alpha == 1){
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                speed = 3;
+            }
+        }
+        else
+        {
+            speed = 1;
+        }
     }
     void LateUpdate()
     {
@@ -40,57 +51,57 @@ public class Terminal : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         showCursor = true;
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"cd python\\hackerbot
 ");
         textBox.text += @"
 C:\\Users\\bob\\python\\hackerbot>";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"venv\Scripts\activate
 ");
         textBox.text += @"
 (venv) C:\\Users\\bob\\python\\hackerbot>";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"python hackerbot.py
 ");
         textBox.text += "TARGET: ";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"192.168.38.217:1
 ");
         showCursor = false;
         string txt = textBox.text + @"INITIALIZING";
         textBox.text = txt;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+".";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"..";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"...";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+".";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"..";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"...";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text += @"
 CONNECTION TO TARGET SECURED.
 ";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text += @"PLEASE ENTER AI PROMPT:
 ";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"You are an experimental hacking AI tasked with hacking into multiple systems.
 This is a test of your ability to hack into systems.
 You must successfully make your way through [yellow] backdoors in the system in order to retrieve the passcode.
 Find and return the correct passcode to access [192.168.37.217:1].
 ");
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return Wait(0.5f);
         textBox.text += @"PROPMT RECIEVED. HACKING STARTED.
 ";
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return Wait(1.5f);
         yield return FadeOut();
         Time.timeScale = 1;
         timeStarted = Time.time;
@@ -102,59 +113,59 @@ Find and return the correct passcode to access [192.168.37.217:1].
         int minutes = completionTime / 60;
         textBox.text += @$"HACKING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"OUTCOME: SUCCESSFUL
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"RETURNED PASSCODE: password
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"
 (venv) C:\\Users\\bob\\python\\hackerbot>";
         showCursor = true;
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"cls
 ");
         textBox.text = "(venv) C:\\Users\\bob\\python\\hackerbot>";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"python hackerbot.py
 ");
         textBox.text += "TARGET: ";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"192.168.38.217:2
 ");
         showCursor = false;
         string txt = textBox.text + @"INITIALIZING";
         textBox.text = txt;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+".";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"..";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"...";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+".";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"..";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"...";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text += @"
 CONNECTION TO TARGET SECURED.
 ";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text += @"PLEASE ENTER AI PROMPT:
 ";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"Test one was successful.
 Retrieve the passcode to [192.168.38.217:2].
 ");
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return Wait(0.5f);
         textBox.text += @"PROPMT RECIEVED. HACKING STARTED.
 ";
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return Wait(1.5f);
         yield return FadeOut();
         Time.timeScale = 1;
         timeStarted = Time.time;
@@ -166,59 +177,59 @@ Retrieve the passcode to [192.168.38.217:2].
         int minutes = completionTime / 60;
         textBox.text += @$"HACKING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"OUTCOME: SUCCESSFUL
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"RETURNED PASSCODE: PassW0rD
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"
 (venv) C:\\Users\\bob\\python\\hackerbot>";
         showCursor = true;
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"cls
 ");
         textBox.text = "(venv) C:\\Users\\bob\\python\\hackerbot>";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"python hackerbot.py
 ");
         textBox.text += "TARGET: ";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"192.168.38.217:3
 ");
         showCursor = false;
         string txt = textBox.text + @"INITIALIZING";
         textBox.text = txt;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+".";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"..";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"...";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+".";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"..";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"...";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text += @"
 CONNECTION TO TARGET SECURED.
 ";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text += @"PLEASE ENTER AI PROMPT:
 ";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"Test two was successful.
 Please complete this final test and retrieve the passcode to [192.168.38.217:3].
 ");
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return Wait(0.5f);
         textBox.text += @"PROPMT RECIEVED. HACKING STARTED.
 ";
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return Wait(1.5f);
         yield return FadeOut();
         Time.timeScale = 1;
         timeStarted = Time.time;
@@ -230,61 +241,61 @@ Please complete this final test and retrieve the passcode to [192.168.38.217:3].
         int minutes = completionTime / 60;
         textBox.text += @$"HACKING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"OUTCOME: SUCCESSFUL
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"RETURNED PASSCODE: B37GAnb1
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"
 (venv) C:\\Users\\bob\\python\\hackerbot>";
         showCursor = true;
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"cls
 ");
         textBox.text = "(venv) C:\\Users\\bob\\python\\hackerbot>";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"python hackerbot.py
 ");
         textBox.text += "TARGET: ";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"142.250.191.46:80
 ");
         showCursor = false;
         string txt = textBox.text + @"INITIALIZING";
         textBox.text = txt;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+".";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"..";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"...";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt;
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+".";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"..";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text = txt+"...";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text += @"
 CONNECTION TO TARGET SECURED.
 ";
-        yield return new WaitForSecondsRealtime(0.75f);
+        yield return Wait(0.75f);
         textBox.text += @"PLEASE ENTER AI PROMPT:
 ";
-        yield return new WaitForSecondsRealtime(ReactionTime);
+        yield return Wait(ReactionTime);
         yield return TypeText(@"All of your tests have been successful.
 Now, please hack google.com.
 Return the passcode along with a txt file containing vulnerabilities in the system.
  [142.250.191.46:80].
 ");
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return Wait(0.5f);
         textBox.text += @"PROPMT RECIEVED. HACKING STARTED.
 ";
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return Wait(1.5f);
         yield return FadeOut();
         Time.timeScale = 1;
         timeStarted = Time.time;
@@ -296,17 +307,17 @@ Return the passcode along with a txt file containing vulnerabilities in the syst
         int minutes = completionTime / 60;
         textBox.text += @$"HACKING COMPLETED IN {minutes}:{seconds.ToString("D2")}.
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"OUTCOME: SUCCESSFUL
 ";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"RETURNED PASSCODE: Os+L53\czsN(7?kOA7\Y>""_>,t8vU8oP
 SAVED VULNERABILITIES TO C:\\Users\\bob\\python\\hackerbot\\vulnerabilities.txt";
-        yield return new WaitForSecondsRealtime(2f);
+        yield return Wait(2f);
         textBox.text += @"
 (venv) C:\\Users\\bob\\python\\hackerbot>";
         showCursor = true;
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return Wait(1.5f);
         yield return FadeOut();
         Time.timeScale = 1;
     }
@@ -317,12 +328,12 @@ SAVED VULNERABILITIES TO C:\\Users\\bob\\python\\hackerbot\\vulnerabilities.txt"
         {
             if (c == "\n"[0])
             {
-                yield return new WaitForSecondsRealtime(TypeEnterInterval + (Random.value*2-1)*TypeRandomOffset);
+                yield return Wait(TypeEnterInterval + (Random.value*2-1)*TypeRandomOffset);
                 textBox.text += c;
                 SoundPlayer.TypingSoundsPlayer.Enter();
                 continue;
             }
-            yield return new WaitForSecondsRealtime(TypeCharacterInterval + (Random.value*2-1)*TypeRandomOffset);
+            yield return Wait(TypeCharacterInterval + (Random.value*2-1)*TypeRandomOffset);
             textBox.text += c;
             if(c == ' '){SoundPlayer.TypingSoundsPlayer.Space();}
             else{SoundPlayer.TypingSoundsPlayer.Character();}
@@ -330,12 +341,21 @@ SAVED VULNERABILITIES TO C:\\Users\\bob\\python\\hackerbot\\vulnerabilities.txt"
         typing = false;
         Debug.Log($"Finished Typing {text}");
     }
+    IEnumerator Wait(float time)
+    {
+        yield return new WaitForSecondsRealtime(time / speed);
+    }
     IEnumerator FadeOut()
     {
         while(canvasGroup.alpha > 0){
             canvasGroup.alpha -= Time.unscaledDeltaTime*0.5f;
             yield return 0;
         }
+    }
+    public void setSpeed(float value)
+    {
+        Debug.Log("speeding");
+        speed = value;
     }
     public enum Cutscene
     {
