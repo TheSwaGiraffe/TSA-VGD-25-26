@@ -8483,8 +8483,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3389164471093143876, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
-      propertyPath: cutscene
-      value: 5
+      propertyPath: sceneIndex
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 3625414397258292479, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
@@ -17726,6 +17726,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[10].Array.data[3].Y
       value: -20000000
       objectReference: {fileID: 0}
+    - target: {fileID: 6516676242061231831, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -189.59998
+      objectReference: {fileID: 0}
     - target: {fileID: 6869236972105931446, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: CenterCam
       value: 0
@@ -17777,6 +17781,10 @@ PrefabInstance:
     - target: {fileID: 8016770135769538962, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080802267367067547, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -189.59998
       objectReference: {fileID: 0}
     - target: {fileID: 8623714159855423928, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size

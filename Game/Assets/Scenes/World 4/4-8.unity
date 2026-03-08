@@ -10629,8 +10629,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3389164471093143876, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
+      propertyPath: cutscene
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3389164471093143876, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: sceneIndex
-      value: 32
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 3625414397258292479, guid: 799d9ead99f2d3f40b49d8b23d55ff93, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
