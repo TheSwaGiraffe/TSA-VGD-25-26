@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
@@ -12,20 +14,21 @@ public class MusicPlayer : MonoBehaviour
     }
     IEnumerator PlaySongs()
     {
-        while(true){
-            AudioSource next = Songs[Random.Range(1, Songs.Length)];
-            while(next == current)
+        while (true)
+        {
+            List<AudioSource> songsLeft = Songs.ToList();
+            while (songsLeft.Count > 0)
             {
-                next = Songs[Random.Range(1, Songs.Length)];
+                current = songsLeft[Random.Range(0, songsLeft.Count)];
+                songsLeft.Remove(current);
+                current.Play();
+                yield return new WaitForSecondsRealtime(1);
+                while(current.time > 0)
+                {
+                    yield return null;
+                }
+                yield return new WaitForSecondsRealtime(5);
             }
-            current = next;
-            current.Play();
-            yield return new WaitForSecondsRealtime(1);
-            while (current.time > 0)
-            {
-                yield return null;
-            }
-            yield return new WaitForSecondsRealtime(2);
         }
     }
     void OnDestroy()

@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Terminal : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class Terminal : MonoBehaviour
     [SerializeField] bool showCursor;
     [SerializeField] bool typing;
     [SerializeField] float timeStarted;
+    [SerializeField] ScrollRect ScrollRect;
+    [SerializeField] float fontPointsPerHectoPixel;
+    [SerializeField] TextMeshProUGUI skip;
     public float speed = 1;
     public bool isActive {get => canvasGroup.alpha > 0;}
     void Start()
@@ -40,6 +44,13 @@ public class Terminal : MonoBehaviour
         {
             speed = 1;
         }
+        ScrollRect.verticalNormalizedPosition = 0;
+        if(Time.frameCount % 20 == 1)
+        {
+            float newFontSize = fontPointsPerHectoPixel * Screen.height;
+            textBox.fontSize = newFontSize;
+            skip.fontSize = newFontSize;
+        }
     }
     void LateUpdate()
     {
@@ -50,6 +61,7 @@ public class Terminal : MonoBehaviour
     public IEnumerator cutscene1()//load venv & start world 1
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 0;
         showCursor = true;
         yield return Wait(ReactionTime);
         yield return TypeText(@"cd python\\hackerbot
@@ -317,9 +329,50 @@ SAVED VULNERABILITIES TO C:\\Users\\bob\\python\\hackerbot\\vulnerabilities.txt"
         textBox.text += @"
 (venv) C:\\Users\\bob\\python\\hackerbot>";
         showCursor = true;
+        yield return Wait(ReactionTime);
+        yield return TypeText(@"deactivate
+");
+        textBox.text += @"
+C:\\Users\\bob\\python\\hackerbot>";
+        yield return Wait(ReactionTime);
+        yield return TypeText(@"cd ..\\emailsender
+");
+        textBox.text += @"
+C:\\Users\\bob\\python\\emailsender>";
+        yield return Wait(ReactionTime);
+        yield return TypeText(@"venv\scripts\activate
+");
+        textBox.text += @"
+(venv) C:\\Users\\bob\\python\\emailsender>";
+        yield return Wait(ReactionTime);
+        yield return TypeText(@"python sendemail.py
+");
+        textBox.text += "TO: ";
+        yield return Wait(ReactionTime);
+        yield return TypeText(@"google@google.com
+");
+        textBox.text += "SUBJECT: ";
+        yield return Wait(ReactionTime);
+        yield return TypeText(@"I found your password
+");
+        textBox.text += "BODY: ";
+        yield return Wait(ReactionTime);
+        yield return TypeText(@"Hey Google, I found the password to google.com.
+You may want to fix your security so that your website doesn't get hacked.
+The vulnerabilities in your security are listed in the attached file.
+Also, I don't have a job so if I could get one of those that would be great.
+
+Regards, Bob.
+");
+        textBox.text += "ATTACHMENTS: ";
+        yield return Wait(ReactionTime);
+        yield return TypeText(@"C:\\Users\\bob\\python\\hackerbot\\vulnerabilities.txt
+");
+        textBox.text += "EMAIL SENT TO [google@google.com].";
         yield return Wait(1.5f);
         yield return FadeOut();
         Time.timeScale = 1;
+        Destroy(gameObject);
     }
     IEnumerator TypeText(string text)
     {

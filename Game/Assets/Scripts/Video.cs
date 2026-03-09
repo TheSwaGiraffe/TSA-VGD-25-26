@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -16,6 +17,19 @@ public class Video : MonoBehaviour
 
     void OnVideoPrepared(VideoPlayer source)
     {
+        StartCoroutine(PlayAfterTerminal());
+    }
+    IEnumerator PlayAfterTerminal()
+    {
+        while (Terminal.Instance.isActive)
+        {
+            yield return null;
+        }
         player.Play();
+        while (true)
+        {
+            Debug.Log(player.time);
+            yield return null;
+        }
     }
 }

@@ -71,7 +71,7 @@ public class RedBlueUpdater : MonoBehaviour
         if(PlayerController.Instance.teleportable.color == ColColor.Blue)
         {
             LayerManager.IgnoreLayerCollision("White", "Player", redActive);
-            LayerManager.IgnoreLayerCollision("WhiteTrigger", "Player", !redActive);
+            LayerManager.IgnoreLayerCollision("WhiteTrigger", "Player", redActive);
             LayerManager.IgnoreLayerCollision("WhiteDeath", "Player", redActive);
         }
         LayerManager.IgnoreLayerCollision("White", "Red", !redActive);

@@ -20,6 +20,7 @@ public class LvlSelect : MonoBehaviour
                 {
                     SoundPlayer.MusicPlayer.StartPlayingSongs();
                     Time.timeScale = 1;
+                    Debug.Log("started from lvlselect");
                     SceneManager.LoadScene(sceneIndex);
                 });
                 template.gameObject.SetActive(false);

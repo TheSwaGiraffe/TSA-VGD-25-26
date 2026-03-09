@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if(Time.timeScale == 0){return;}
         //Input
         float xInput = Input.GetAxis("Horizontal");
         bool jumping = Input.GetKey("up") || Input.GetKey("w");
